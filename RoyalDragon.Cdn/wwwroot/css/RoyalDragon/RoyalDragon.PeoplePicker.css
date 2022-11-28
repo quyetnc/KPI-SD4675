@@ -1,0 +1,29 @@
+.people-picker-item {
+    min-height: 40px;
+    /*background-color: orange;*/
+    clear: both;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+    .people-picker-item .employee-thumbnail {
+        max-height: 32px;
+    }
+
+    .people-picker-item > .thumbnail-warper {
+        align-self: center;
+
+        max-height: 32px;
+        max-width: 30px;
+        margin-right: 5px;
+    }
+
+    .people-picker-item > .details-warper {
+        align-self: center;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }

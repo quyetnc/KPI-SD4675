@@ -1,0 +1,46 @@
+table[data-dynamic] > tbody > tr > th,
+table[data-dynamic] > tfoot > tr > th,
+table[data-dynamic] > thead > tr > td,
+table[data-dynamic] > tbody > tr > td,
+table[data-dynamic] > tfoot > tr > td,
+table.table-dynamic > tbody > tr > th,
+table.table-dynamic > tfoot > tr > th,
+table.table-dynamic > thead > tr > td,
+table.table-dynamic > tbody > tr > td,
+table.table-dynamic > tfoot > tr > td
+{
+    padding: 0px; 
+}
+
+table[data-dynamic] > tbody > td input,
+table.table-dynamic > tbody > td input,
+table[data-dynamic] td .editable-input > input,
+table.table-dynamic td .editable-input > input
+ {
+    width: 110%;
+    height: 110%;
+    padding: 3px;
+    margin: -2px;
+}
+table[data-dynamic] > tbody > td .editable-input,
+table.table-dynamic > tbody > td .editable-input,
+table[data-dynamic] td .editable-input,
+table.table-dynamic td .editable-input
+ {
+    overflow: hidden;
+}
+
+table[data-dynamic] td:last-child,
+table.table-dynamic td:last-child { 
+    padding: 2px 24px 2px 0; 
+}
+
+td.canEdit:focus {
+    background-color: #87cefa !important;
+}
+
+table[data-dynamic] > tbody > tr > td.line-jump,
+table.table-dynamic > tbody > tr > td.line-jump {
+    padding-top: 20px;
+    background-color: #fff;
+}

@@ -1,0 +1,156 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Products Details</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>Products Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products Details -->
+<div class="products-details-area ptb-100">
+    <div class="container" *ngIf="data">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-12">
+                <div class="products-details-image">
+                    <owl-carousel-o [options]="productsSlides">
+                        <ng-template
+                            carouselSlide
+                            *ngFor="let Image of data.detailsImg"
+                        >
+                            <img [src]="Image.url" alt="products-image" />
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12">
+                <div class="products-details-desc">
+                    <h3>{{ data.title }}</h3>
+                    <div class="price">
+                        <span class="new-price">
+                            {{ data.currencyType }}
+                            {{ data.currentPrice }}
+                        </span>
+                        <span class="old-price" *ngIf="data.oldPrice">
+                            {{ data.currencyType }}
+                            {{ data.oldPrice }}
+                        </span>
+                    </div>
+                    <p>{{ data.shortDesc }}</p>
+                    <ul class="products-info">
+                        <li><span>SKU:</span> {{ data.sku }}</li>
+                        <li>
+                            <span>Vendor:</span>
+                            <a routerLink="/shop">{{ data.vendor }}</a>
+                        </li>
+                        <li *ngIf="data.inStock">
+                            <span>Availability:</span> In stock
+                        </li>
+                    </ul>
+                    <div class="products-add-to-cart">
+                        <div class="d-flex align-items-center">
+                            <div class="input-counter">
+                                <input
+                                    type="number"
+                                    min="1"
+                                    [(ngModel)]="inputnumber"
+                                />
+                            </div>
+                            <button
+                                (click)="addToCart(data, inputnumber)"
+                                type="submit"
+                                class="default-btn"
+                            >
+                                <i class="fas fa-shopping-bag"></i> ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                    <a routerLink="/wishlist" class="add-to-wishlist-btn"
+                        ><i class="fas fa-plus"></i> Add to Wishlist</a
+                    >
+                    <div class="products-share">
+                        <ul class="social">
+                            <li><span>Share:</span></li>
+                            <li>
+                                <a href="#" class="facebook" target="_blank"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter" target="_blank"
+                                    ><i class="fab fa-linkedin-in"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" class="linkedin" target="_blank"
+                                    ><i class="fab fa-twitter"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" class="instagram" target="_blank"
+                                    ><i class="fab fa-instagram"></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="products-details-tabs">
+                    <ngx-tabset>
+                        <ngx-tab tabTitle="Description">
+                            <div markdown ngPreserveWhitespaces>
+                                {{ data.LongDesc }}
+                            </div>
+                        </ngx-tab>
+                        <ngx-tab tabTitle="Additional information">
+                            <div markdown ngPreserveWhitespaces>
+                                {{ data.addInfo }}
+                            </div>
+                        </ngx-tab>
+                        <ngx-tab tabTitle="Reviews">
+                            <div class="products-review-comments">
+                                <div
+                                    class="user-review"
+                                    *ngFor="let feedback of data.reviews"
+                                >
+                                    <img
+                                        [src]="feedback.authorImg.url"
+                                        alt="image"
+                                    />
+                                    <div class="review-rating">
+                                        <div class="review-stars">
+                                            <i
+                                                class="fas fa-star checked"
+                                                *ngFor="
+                                                    let in of counter(
+                                                        feedback.ratings
+                                                    );
+                                                    let i = index
+                                                "
+                                            ></i>
+                                        </div>
+                                    </div>
+                                    <span class="d-block sub-name">{{
+                                        feedback.name
+                                    }}</span>
+                                    <p>{{ feedback.feedback }}</p>
+                                </div>
+                            </div>
+                        </ngx-tab>
+                    </ngx-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-subscribe></app-subscribe>

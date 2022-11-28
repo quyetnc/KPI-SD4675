@@ -1,0 +1,122 @@
+<ng-template #EditSetingProductDialogModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">
+      Sản phẩm : {{ productData.name }}
+    </h4>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6 custom-control custom-radio">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="isBanner"
+            [(ngModel)]="productData.isBanner"
+            [checked]="productData.isBanner"
+            [value]="productData.isBanner"
+          />
+          <label class="custom-control-label" for="isBanner"
+            >Is Banner</label
+          >
+        </div>
+        <div class="col-6 custom-control custom-radio">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="IsFeather"
+            [(ngModel)]="productData.isFeather"
+            [checked]="productData.isFeather"
+            [value]="productData.isFeather"
+          />
+          <label class="custom-control-label" for="IsFeather"
+            >Is Feather</label
+          >
+        </div>
+        <div class="col-6 custom-control custom-radio">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="IsSpecialOffer"
+            [(ngModel)]="productData.isSpecialOffer"
+            [checked]="productData.isSpecialOffer"
+            [value]="productData.isSpecialOffer"
+          />
+          <label class="custom-control-label" for="IsSpecialOffer"
+            >Is SpecialOffer</label
+          >
+        </div>
+        <div class="col-6 custom-control custom-radio">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="IsPopular"
+            [(ngModel)]="productData.isPopular"
+            [checked]="productData.isPopular"
+            [value]="productData.isPopular"
+          />
+          <label class="custom-control-label" for="IsPopular">Is Popular</label>
+        </div>
+        <div class="col-12" *ngIf="productData.isBanner">
+            <div class="form-group">
+              <label for="img">Hình ảnh banner</label>
+              <div class="media">
+                <a href="javascript:void(0);" class="mr-25">
+                  <img
+                    [src]="avatarImage"
+                    class="rounded mr-50"
+                    alt="profile image"
+                    height="76"
+                    width="80"
+                  />
+                </a>
+                <!-- upload and reset button -->
+                <div class="media-body mt-75 ml-1">
+                  <button
+                    (click)="file.click()"
+                    for="account-upload"
+                    class="btn btn-sm btn-primary mb-75 mr-75"
+                    rippleEffect
+                  >
+                    Tải ảnh lên
+                  </button>
+                  <input
+                    type="file"
+                    #file
+                    id="account-upload"
+                    hidden
+                    accept="image/*"
+                    (change)="uploadImage($event)"
+                  />
+                  <p>Các file cho phép JPG, GIF hoặc PNG.</p>
+                </div>
+                <!--/ upload and reset button -->
+              </div>
+              <!--/ header media -->
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">
+      Lưu lại
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModalAlert(modal)"
+      rippleEffect
+    >
+      Hủy bỏ
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,46 @@
+<div class="home-area" *ngFor="let Content of bgImage;" style="background-image: url({{Content.img}});">
+    <div class="container-fluid">
+        <div class="home-slides">
+            <owl-carousel-o [options]="homeSlides">
+                <ng-template carouselSlide>
+                    <div class="banner-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-12">
+                                <div class="content">
+                                    <span class="sub-title">New Inspiration 2021!</span>
+                                    <h1>CLOTHING MADE FOR YOU!</h1>
+                                    <p>Trending from men and women style collection</p>
+                                    <a routerLink="/shop-right-sidebar-1" class="default-btn"><i class="fas fa-store"></i> SHOP NOW</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-12">
+                                <div class="image">
+                                    <img src="assets/img/banner/banner3.png" alt="banner-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="banner-item">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-12">
+                                <div class="content">
+                                    <span class="sub-title">New Arrival 2021!</span>
+                                    <h1>MADE FOR YOU CLOTHING!</h1>
+                                    <p>Trending from men and women style collection</p>
+                                    <a routerLink="/shop-right-sidebar-1" class="default-btn"><i class="fas fa-store"></i> SHOP NOW</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-12">
+                                <div class="image">
+                                    <img src="assets/img/banner/banner4.png" alt="banner-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

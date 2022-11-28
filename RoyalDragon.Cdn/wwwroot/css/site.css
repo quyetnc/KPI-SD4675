@@ -1,0 +1,197 @@
+﻿/*Add here your custom CSS*/
+
+.upload-table {
+    margin-top: 10px;
+}
+
+.control-label {
+    font-weight: normal;
+}
+
+.btn-group .btn {
+    padding: 6px 8px;
+}
+
+.w100p {
+    width: 100%;
+}
+
+.w20p {
+    width: 20%;
+}
+
+.w15p {
+    width: 15%;
+}
+
+.w10p {
+    width: 10%;
+}
+
+.w8p {
+    width: 8%;
+}
+
+.w5p {
+    width: 5%;
+}
+
+.w150 {
+    max-width: 150px;
+}
+
+/************ Dropzone ***********/
+.dropzone .dz-message {
+    font-size: 18px;
+}
+
+
+/************Document drop***************/
+#documentUpload {
+    height: 100px;
+}
+
+#drop-backdrop, #drop-target {
+    position: absolute;
+    width: 90%;
+    height: 80px;
+    margin: 10px 15px;
+}
+
+#drop-target {
+    border: 1px dashed #aaa;
+}
+
+#drop-backdrop .text {
+    font-size: 18px;
+    width: 250px;
+    margin: 25px auto 0 auto;
+    position: relative;
+}
+
+#documentUpload.uploading #drop-backdrop {
+    display: none;
+}
+
+.dragged {
+    color: white;
+    width: 100%;
+    background-color: cornflowerblue;
+}
+
+#query + span.add-on {
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+}
+
+    #query + span.add-on:hover {
+        background-color: #eaeaea;
+        background-image: none;
+    }
+
+.indexTitle {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 25px;
+    float: left;
+}
+
+.popup {
+    position: fixed;
+    top: 65px;
+    right: 30px;
+    width: 500px;
+    /*z-index: 10000;*/
+}
+/**************End Document Drop************/
+
+/*START: Loading icon */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #9370DB;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+    #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #BA55D3;
+        -webkit-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+    }
+
+    #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #FF00FF;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+    }
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/*END: Loading icon */
+
+.action-header-column {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-width: 120px;
+}

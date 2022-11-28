@@ -1,0 +1,174 @@
+.electronic-banner-area {
+    background-color: #d1e2fc;
+    padding: {
+        top: 70px;
+        bottom: 70px;
+    };
+}
+.electronic-banner-content {
+    span {
+        color: var(--mainColor);
+        display: inline-block;
+        margin-bottom: 10px;
+        font: {
+            size: 15px;
+            weight: 500;
+        };
+    }
+    h1 {
+        font-size: 88px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .banner-btn {
+        padding: 0;
+        margin: {
+            top: 25px;
+            bottom: 0;
+        };
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 15px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+.electronic-banner-image {
+    position: relative;
+    text-align: center;
+
+    .price {
+        left: 0;
+        right: 0;
+        bottom: 55px;
+        font-size: 35px;
+        font-weight: bold;
+        position: absolute;
+        color: var(--mainColor);
+
+        span {
+            font-size: 15px;
+            color: var(--blackColor);
+            font-weight: 600;
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .electronic-banner-area {
+        padding: {
+            top: 60px;
+            bottom: 60px;
+        };
+    }
+    .electronic-banner-content {
+        text-align: center;
+
+        span {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+        p {
+            font-size: 14px;
+        }
+        .banner-btn {
+            margin-top: 15px;
+        }
+    }
+    .electronic-banner-image {
+        margin-top: 25px;
+    
+        .price {
+            bottom: 30px;
+            font-size: 25px;
+    
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .electronic-banner-area {
+        padding: {
+            top: 80px;
+            bottom: 80px;
+        };
+    }
+    .electronic-banner-content {
+        text-align: center;
+
+        span {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .banner-btn {
+            margin-top: 20px;
+        }
+    }
+    .electronic-banner-image {
+        margin-top: 25px;
+    
+        .price {
+            font-size: 30px;
+    
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .electronic-banner-content {
+        span {
+            margin-bottom: 5px;
+        }
+        h1 {
+            font-size: 70px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    .electronic-banner-image {
+        .price {
+            bottom: 40px;
+            font-size: 30px;
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

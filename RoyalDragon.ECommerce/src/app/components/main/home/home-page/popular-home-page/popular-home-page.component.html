@@ -1,0 +1,56 @@
+<div class="popular-item-area pt-100 pb-100">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xl-6 col-lg-12 col-md-12">
+                <div class="popular-item-add-card">
+                    <img
+                        src="assets/img/home-six/popular/add.jpg"
+                        alt="image"
+                    />
+                    <div class="content">
+                        <span>Up to 50% Off</span>
+                        <h3>Strawberry Juice</h3>
+                        <a
+                            routerLink="/shop-full-width-1"
+                            class="default-btn-with-border-radius"
+                            >Mua ngay</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12">
+                <div class="section-heading-title text-start">
+                    <h2>Mặt hàng phổ biến</h2>
+                </div>
+                <div class="popular-item-slides">
+                    <owl-carousel-o [options]="popularProductsSlides">
+                        <ng-template carouselSlide *ngFor="let product of listProductByPopular">
+                            <div class="popular-item-card">
+                                <div class="popular-image">
+                                    <a routerLink="/{{ product.slug }}">
+                                        <img [src]="env + product.img" alt="image">
+                                    </a>
+                                    <div class="new">New</div>
+                                </div>
+                                <div class="popular-content">
+                                    <h3>
+                                        <a routerLink="/{{ product.slug }}">{{product.name}}</a>
+                                    </h3>
+                                    <div class="price">
+                                        <span class="new-price">{{product.priceOutput | vnd}}</span>
+                                        <span class="old-price">{{product.priceInput | vnd}}</span>
+                                    </div>
+                                    <ul class="rating">
+                                        <li><i *ngFor="let s of [1,2,3,4,5]"
+                                            [ngClass]="_commonService.fRenderClassRating(s,product.star)"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ng-template>
+                       
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

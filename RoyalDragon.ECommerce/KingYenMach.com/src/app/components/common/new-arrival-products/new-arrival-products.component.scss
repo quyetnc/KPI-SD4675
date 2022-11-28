@@ -1,0 +1,280 @@
+.single-crafts-products-box {
+    text-align: center;
+    margin-bottom: 30px;
+    transition: var(--transition);
+    
+    .crafts-products-image {
+        position: relative;
+        overflow: hidden;
+
+        .products-button {
+            list-style-type: none;
+            position: absolute;
+            margin-bottom: 0;
+            padding-left: 0;
+            right: 20px;
+            top: 40px;
+    
+            li {
+                opacity: 0;
+                visibility: hidden;
+                margin-bottom: 8px;
+                transform: translateX(30px);
+                transition: all 0.3s ease-in-out 0s;
+    
+                a {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 18px;
+                    line-height: 42px;
+                    text-align: center;
+                    position: relative;
+                    display: inline-block;
+                    color: var(--whiteColor);
+                    background-color: var(--blackColor);
+    
+                    &:hover {
+                        color: var(--whiteColor);
+                        background-color: var(--mainColor);
+                    }
+                    .tooltip-label {
+                        top: 45%;
+                        opacity: 0;
+                        right: 110%;
+                        padding: 0 10px;
+                        font-size: 13px;
+                        line-height: 28px;
+                        position: absolute;
+                        visibility: hidden;
+                        color: transparent;
+                        white-space: nowrap;
+                        letter-spacing: .3px;
+                        color: var(--whiteColor);
+                        background-color: transparent;
+                        transition: all .2s ease-in-out;
+                        background-color: var(--blackColor);
+                        transform: translateX(0) translateY(-45%);
+    
+                        &::before {
+                            top: 50%;
+                            right: -7px;
+                            content: "\f0da";
+                            position: absolute;
+                            text-rendering: auto;
+                            color: var(--blackColor);
+                            transform: translateY(-50%);
+                            transition: all .2s ease-in-out;
+                            -webkit-font-smoothing: antialiased;
+                            font: {
+                                family: "Font Awesome 5 Free";
+                                variant: normal;
+                                weight: 900;
+                                size: 20px;
+                            };
+                        }
+                    }
+                    &:hover {
+                        .tooltip-label {
+                            visibility: visible;
+                            right: 130%;
+                            opacity: 1;
+                        }
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:nth-child(1) {
+                    transition-delay: 0.1s;
+                }
+                &:nth-child(2) {
+                    transition-delay: 0.2s;
+                }
+                &:nth-child(3) {
+                    transition-delay: 0.3s;
+                }
+            }
+        }
+        .add-to-cart-btn {
+            opacity: 0;
+            width: 100%;
+            bottom: -15px;
+            padding: 10px;
+            display: block;
+            position: absolute;
+            visibility: hidden;
+            color: var(--whiteColor);
+            transition: var(--transition);
+            background-color: var(--blackColor);
+            font: {
+                size: 15px;
+                weight: 500;
+            };
+            i {
+                top: 8.5px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+                margin-left: 8px;
+                line-height: 20px;
+                text-align: center;
+                border-radius: 50%;
+                position: relative;
+                display: inline-block;
+                transform: translateY(-50%);
+                background-color: #f2f2f2;
+                color: var(--optionalColor);
+                transition: var(--transition);
+            }
+            &:hover {
+                background-color: var(--mainColor);
+                
+                i {
+                    background-color: var(--blackColor);
+                    color: var(--whiteColor);
+                }
+            }
+        }
+        img {
+            transition: var(--transition);
+        }
+    }
+    .content {
+        margin-top: 25px;
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 0;
+        }
+        .price {
+            color: var(--optionalColor);
+            margin-top: 15px;
+            font: {
+                size: var(--fontSize);
+                weight: 500;
+            };
+        }
+    }
+    &:hover {
+        transform: translateY(-5px);
+
+        .crafts-products-image {
+            .products-button {
+                li {
+                    transform: translateX(0);
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+            .add-to-cart-btn {
+                visibility: visible;
+                opacity: 1;
+                bottom: 0;
+            }
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+.d-none {
+    &.d-block {
+        display: block !important;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .single-crafts-products-box {
+        .crafts-products-image {
+            .products-button {
+                right: 15px;
+                top: 15px;
+        
+                li {
+                    transform: translateX(0);
+                    visibility: visible;
+                    opacity: 1;
+    
+                    a {
+                        width: 35px;
+                        height: 35px;
+                        font-size: 16px;
+                        line-height: 35px;
+                    }
+                }
+            }
+            .add-to-cart-btn {
+                visibility: visible;
+                opacity: 1;
+                bottom: 0;
+            }
+            img {
+                transition: var(--transition);
+            }
+        }
+        .content {
+            margin-top: 18px;
+    
+            h3 {
+                font-size: 18px;
+            }
+            .price {
+                margin-top: 12px;
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .single-crafts-products-box {
+        .crafts-products-image {
+            .products-button {
+                right: 20px;
+                top: 20px;
+        
+                li {
+                    transform: translateX(0);
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+        .content {
+            margin-top: 20px;
+    
+            h3 {
+                font-size: 20px;
+            }
+            .price {
+                font-size: 15px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .single-crafts-products-box {
+        .content {
+            margin-top: 20px;
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

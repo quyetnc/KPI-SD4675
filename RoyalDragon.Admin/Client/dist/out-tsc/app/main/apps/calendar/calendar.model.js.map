@@ -1,0 +1,1 @@
+{"version":3,"file":"calendar.model.js","sourceRoot":"","sources":["../../../../../../src/app/main/apps/calendar/calendar.model.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,QAAQ;IAArB;QACE,OAAE,GAAI,SAAS,CAAC;QAEhB,UAAK,GAAW,EAAE,CAAC;QAGnB,WAAM,GAAG,KAAK,CAAC;QAEf,kBAAa,GAAG;YACd,QAAQ,EAAE,EAAE;YACZ,WAAW,EAAE,EAAE;YACf,QAAQ,EAAE,EAAE;SACb,CAAC;IACJ,CAAC;CAAA"}

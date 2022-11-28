@@ -1,0 +1,196 @@
+// @import "../../../../../node_modules/bs-stepper/dist/css/bs-stepper.css";
+@import "../../../../../node_modules/bs-stepper/dist/css/bs-stepper.min.css";
+.order-tracking-content {
+    padding-right: 15px;
+    
+    form {
+        .form-group {
+            margin-bottom: 25px;
+
+            label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            span {
+                color: red;
+                font-size: smaller;
+            }
+        }
+        .default-btn {
+            text-align: center;
+            display: block;
+            width: 100%;
+            padding: {
+                left: 30px;
+                right: 30px;
+            };
+            
+        }
+        .disabled {
+            cursor: no-drop;
+            &:hover {
+                background-color: #6c757d;
+            }
+        }
+    }
+}
+.order-tracking-image {
+    padding-left: 15px;
+    text-align: center;
+}
+.order-tracking-area {
+    .container {
+        .warning-noresult {
+            color:#1155cc;
+            font-weight: 600;
+            text-align: center;
+        }
+    }
+}
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+    
+    .order-tracking-content {
+        padding-right: 0;
+
+        form {
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .order-tracking-image {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .order-tracking-content {
+        padding-right: 0;
+
+        form {
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .order-tracking-image {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .order-tracking-area .container {
+        max-width: 1150px;
+    }
+    .bs-stepper .bs-stepper-header .line {
+        padding: 0 0.5rem;
+    }
+}
+@media only screen and (min-width: 1400px){
+    // .order-tracking-area .container {
+    //     max-width: max-content;
+    // }
+    .bs-stepper .bs-stepper-header .line {
+        padding: 0 1rem !important;
+    }
+}
+// Custom Css
+.bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-box {
+    background-color: #7367f0;
+    color: #fff;
+    box-shadow: 0 3px 6px 0 rgb(115 103 240 / 40%);
+}
+.horizontal-wizard, .vertical-wizard, .modern-horizontal-wizard, .modern-vertical-wizard {
+    margin-bottom: 2.2rem;
+}
+.bs-stepper {
+    background-color: #fff;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 0.5rem;
+}
+.bs-stepper .bs-stepper-header {
+    padding: 1.5rem 1.5rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(34, 41, 47, 0.08);
+    margin: 0;
+}
+.bs-stepper-header {
+    display: flex;
+    align-items: center;
+}
+.bs-stepper .bs-stepper-header .step {
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    pointer-events: none !important;
+}
+.bs-stepper .bs-stepper-header .step .step-trigger {
+    padding: 0;
+    flex-wrap: nowrap;
+    font-weight: normal;
+}
+
+.bs-stepper .step-trigger:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-box {
+    background-color: #7367f0;
+    color: #fff;
+    box-shadow: 0 3px 6px 0 rgb(115 103 240 / 40%);
+}
+.bs-stepper .bs-stepper-header .line {
+    flex: 0;
+    min-width: auto;
+    min-height: auto;
+    background-color: transparent;
+    margin: 0;
+    padding: 0 1.75rem;
+    color: #6e6b7b;
+    font-size: 1.5rem;
+}
+.bs-stepper .bs-stepper-header .step.active .step-trigger .bs-stepper-box {
+    background-color: #7367f0;
+    color: #fff;
+    box-shadow: 0 3px 6px 0 rgb(115 103 240 / 40%);
+}
+.bs-stepper .step-trigger {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #6c757d;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    transition: background-color .15s ease-out,color .15s ease-out;
+}
+@import '@core/scss/angular/libs/form-wizard.component.scss';

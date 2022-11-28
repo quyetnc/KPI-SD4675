@@ -1,0 +1,28 @@
+<div class="categories-shop-area pt-100 pb-100">
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>Mua sắm theo danh mục</h2>
+        </div>
+        <div class="categories-shop-slides">
+            <owl-carousel-o [options]="categoriesSlides">
+                <ng-template carouselSlide *ngFor="let category of listCategory">
+                    <div class="categories-shop-card">
+                        <div class="categories-image">
+                            <a routerLink="/category/{{ category.slug }}">
+                                <img src="{{env+category.image}}"  class="rounded-circle" alt="{{category.name}}" />
+                            </a>
+                        </div>
+                        <div class="categories-content">
+                            <h3>
+                                <a routerLink="/category/{{ category.slug }}">{{
+                                    category.name
+                                    }}</a>
+                            </h3>
+                            <span>{{ category.quantityProduct }} mặt hàng</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

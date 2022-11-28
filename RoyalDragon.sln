@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalDragon.WebApi", "RoyalDragon.WebApi\RoyalDragon.WebApi.csproj", "{9773F63D-177F-44D2-B050-D55D27A69057}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalDragon.Model", "RoyalDragon.Model\RoyalDragon.Model.csproj", "{FD24E6A9-D012-4C0B-BBA5-70B80D552F6E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalDragon.Common", "RoyalDragon.Common\RoyalDragon.Common.csproj", "{DE568B8F-DD38-4A05-B51F-2E92E2667957}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalDragon.Cdn", "RoyalDragon.Cdn\RoyalDragon.Cdn.csproj", "{8337EFCB-D3C9-49D6-A77C-629AF5890366}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalDragon.Application.Mvc", "RoyalDragon.Application.Mvc\RoyalDragon.Application.Mvc.csproj", "{5A82CA98-4A52-402F-9487-48021319CAFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalDragon.Admin", "RoyalDragon.Admin\RoyalDragon.Admin.csproj", "{108AAF82-253F-430F-8DD0-D57A22D54C0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9773F63D-177F-44D2-B050-D55D27A69057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9773F63D-177F-44D2-B050-D55D27A69057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9773F63D-177F-44D2-B050-D55D27A69057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9773F63D-177F-44D2-B050-D55D27A69057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD24E6A9-D012-4C0B-BBA5-70B80D552F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD24E6A9-D012-4C0B-BBA5-70B80D552F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD24E6A9-D012-4C0B-BBA5-70B80D552F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD24E6A9-D012-4C0B-BBA5-70B80D552F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE568B8F-DD38-4A05-B51F-2E92E2667957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE568B8F-DD38-4A05-B51F-2E92E2667957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE568B8F-DD38-4A05-B51F-2E92E2667957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE568B8F-DD38-4A05-B51F-2E92E2667957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8337EFCB-D3C9-49D6-A77C-629AF5890366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8337EFCB-D3C9-49D6-A77C-629AF5890366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8337EFCB-D3C9-49D6-A77C-629AF5890366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8337EFCB-D3C9-49D6-A77C-629AF5890366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A82CA98-4A52-402F-9487-48021319CAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A82CA98-4A52-402F-9487-48021319CAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A82CA98-4A52-402F-9487-48021319CAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A82CA98-4A52-402F-9487-48021319CAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108AAF82-253F-430F-8DD0-D57A22D54C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108AAF82-253F-430F-8DD0-D57A22D54C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108AAF82-253F-430F-8DD0-D57A22D54C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108AAF82-253F-430F-8DD0-D57A22D54C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6ED01E6-9040-4252-852D-69EE8E2A6DD8}
+	EndGlobalSection
+EndGlobal

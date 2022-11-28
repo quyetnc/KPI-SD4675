@@ -1,0 +1,351 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Tìm kiếm sản phẩm</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Trang chủ</a></li>
+                    <li>Tìm kiếm</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="products-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <div class="widget widget_search">
+                        <form class="search-form">
+                            <input
+                                type="search"
+                                class="search-field"
+                                placeholder="Search..."
+                                name="text"
+                                [(ngModel)]="nameRequest"
+                                (keyup.enter)="onClickSubmit()"
+                            />
+                            <button type="button" (click)="onClickSubmit()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="widget widget_categories">
+                        <h3 class="widget-title"><span>Danh mục sản phẩm</span></h3>
+                        <ul>
+                            <li 
+                                (click)="getCategoryByProduct(category)" 
+                                *ngFor="let category of listCategories"
+                            >
+                                <a [ngClass]="this.categoryIsPicked == category.categoryId ? 'active' : ''">{{category.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget widget_colors">
+                        <h3 class="widget-title">
+                            <span>Lọc theo màu sắc</span>
+                        </h3>
+                        <ul>
+                            <li>
+                                <a routerLink="/shop-left-sidebar-1">
+                                    <span class="gray">Gray</span>
+                                    <span>Gray</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop-left-sidebar-1">
+                                    <span class="green">Green</span>
+                                    <span>Green</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop-left-sidebar-1">
+                                    <span class="red">Red</span>
+                                    <span>Red</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop-left-sidebar-1">
+                                    <span class="black">Black</span>
+                                    <span>Black</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/shop-left-sidebar-1">
+                                    <span class="brown">Brown</span>
+                                    <span>Brown</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="widget widget_price_filter">
+                        <h3 class="widget-title">
+                            <span>Lọc theo giá</span>
+                        </h3>
+                        <div class="collection_filter_by_price">
+                            <ngx-slider
+                                [(value)]="minValue"
+                                [(highValue)]="maxValue"
+                                [options]="options"
+                                (userChangeEnd)="onFilterPrice($event)"
+                            >
+                            </ngx-slider>
+                        </div>
+                    </div>
+                    <div class="widget widget_vaxim_posts_thumb">
+                        <h3 class="widget-title">
+                            <span>Mặt hàng bán chạy nhất</span>
+                        </h3>
+                        <article
+                            class="item"
+                            *ngFor="
+                                let content of listSearchs
+                                    | paginate
+                                        : {
+                                              itemsPerPage: 4,
+                                              currentPage: shopGrid
+                                          }
+                            "
+                        >
+                            <a
+                                [routerLink]="'/detail/' + content.productId"
+                                class="thumb"
+                            >
+                                <img
+                                    [src]="apiUrl + content.img"
+                                    alt="blog-image"
+                                />
+                            </a>
+                            <div class="info">
+                                <h4 class="title">
+                                    <a
+                                        [routerLink]="
+                                            '/detail/' + content.productId
+                                        "
+                                        >{{ content.name }}</a
+                                    >
+                                </h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="price">{{
+                                    content.priceOutput | vnd
+                                }}</span>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="widget widget_follow_us">
+                        <h3 class="widget-title"><span>Theo dõi chúng tôi trên</span></h3>
+                        <ul>
+                            <li><a href="#" target="_blank">Facebook</a></li>
+                            <li><a href="#" target="_blank">Twitter</a></li>
+                            <li><a href="#" target="_blank">Instagram</a></li>
+                            <li><a href="#" target="_blank">Pinterest</a></li>
+                            <li><a href="#" target="_blank">Linkedin</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget widget_tag_cloud">
+                        <h3 class="widget-title"><span>Tags</span></h3>
+                        <div class="tagcloud">
+                            <a routerLink="/shop-left-sidebar-1"
+                                >Advertisment</a
+                            >
+                            <a routerLink="/shop-left-sidebar-1">Business</a>
+                            <a routerLink="/shop-left-sidebar-1">Life</a>
+                            <a routerLink="/shop-left-sidebar-1">Lifestyle</a>
+                            <a routerLink="/shop-left-sidebar-1">Fashion</a>
+                            <a routerLink="/shop-left-sidebar-1">Ads</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="vaxim-grid-sorting row align-items-center">
+                    <div class="col-lg-6 col-md-6 result-count">
+                        <div class="d-flex align-items-center">
+                            <p>
+                                Tìm thấy 
+                                <span class="count">{{
+                                    listProduct.length
+                                }}</span>
+                                sản phẩm ứng với kết quả bạn tìm
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 ordering">
+                        <div class="select-box">
+                            <label>Sắp xếp theo:</label>
+                            <select
+                                (change)="mySelectHandler($event.target.value)"
+                            >
+                                <option ngValue="0">Mặc định</option>
+                                <!-- <option ngValue="1">Popularity</option> -->
+                                <option ngValue="2">Mới nhất</option>
+                                <option ngValue="3">Giá: thấp tới cao</option>
+                                <option ngValue="4">Giá: cao đến thấp</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        *ngFor="
+                            let content of listProduct
+                                | paginate
+                                    : { itemsPerPage: 8, currentPage: shopGrid }
+                        "
+                    >
+                        <div class="single-products-box">
+                            <a
+                                [routerLink]="'/detail/' + content.productId"
+                                class="d-block"
+                                target="_blank"
+                            >
+                                <img
+                                    [src]="apiUrl + content.img"
+                                    alt="products-image"
+                                />
+                            </a>
+                            <ul class="products-button">
+                                <li>
+                                    <button
+                                        type="button"
+                                        (click)="
+                                            triggerModal(modalData);
+                                            addToModal(content)
+                                        "
+                                    >
+                                        <i class="fas fa-search-plus"></i>
+                                        <span class="tooltip-label">
+                                            Xem nhanh
+                                        </span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <a routerLink="/compare">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span class="tooltip-label"
+                                            >So sánh</span
+                                        >
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/wishlist">
+                                        <i class="far fa-heart"></i>
+                                        <span class="tooltip-label"
+                                            >Yêu thích</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                            <span class="sale">SALE</span>
+                            <div class="content">
+                                <h3>
+                                    <a routerLink="/products-details">{{
+                                        content.name
+                                    }}</a>
+                                </h3>
+                                <button
+                                    class="add-to-cart-btn"
+                                    (click)="addToCart(content)"
+                                >
+                                    Thêm vào giỏ hàng<i class="fas fa-cart-plus"></i>
+                                </button>
+                                <div class="price">
+                                    <span class="new-price">{{
+                                        content.priceOutput | vnd
+                                    }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="pagination-area">
+                            <pagination-controls
+                                previousLabel=""
+                                nextLabel=""
+                                (pageChange)="shopGrid = $event"
+                            ></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #modalData let-modal>
+    <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+    >
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="modal-body" *ngIf="modalProduct">
+        <div
+            class="row align-items-center"
+            *ngFor="let product of modalProduct"
+        >
+            <div class="col-lg-6 col-md-6">
+                <div class="image">
+                    <img [src]="apiUrl + product.img" alt="image" />
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="content">
+                    <h3>{{ product.name }}</h3>
+                    <div class="price">
+                        <span class="new-price">
+                            {{ product.priceOutput | vnd }}
+                        </span>
+                        <!-- <span class="old-price" *ngIf="product.oldPrice">
+                        {{ product.currencyType }}{{ product.oldPrice }}
+                    </span> -->
+                    </div>
+                    <p>{{ product.shortDescription }}</p>
+                    <ul class="products-info">
+                        <li>
+                            <span>Vendor:</span>
+                            <!-- <a routerLink="/shop-full-width-1">{{ product.vendor }}</a> -->
+                        </li>
+                        <li *ngIf="product.inStock">
+                            <span>Availability:</span>
+                            In stock
+                        </li>
+                        <li>
+                            <span>Categories:</span>
+                            <a routerLink="/shop-full-width-1">Hoodie</a>
+                        </li>
+                    </ul>
+                    <div class="products-add-to-cart">
+                        <button
+                            (click)="addToCart(product)"
+                            type="submit"
+                            class="default-btn"
+                        >
+                            <i class="fas fa-shopping-bag"></i> ADD TO CART
+                        </button>
+                        <a
+                            routerLink="/wishlist"
+                            title="Add to Wishlist"
+                            class="add-to-wishlist-btn"
+                            ><i class="far fa-heart"></i
+                        ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,273 @@
+<!-- Top Header -->
+<div
+    class="top-header-area"
+    [ngClass]="{
+        'd-none': router.url === '/index-2' || router.url === '/index-5'
+    }"
+    *ngIf="false"
+>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <p>Free Delivery Over $35 to Most of USA*</p>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="top-header-info">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <ul class="social-links">
+                            <li>
+                                <a href="#" target="_blank"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"
+                                    ><i class="fab fa-twitter"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"
+                                    ><i class="fab fa-instagram"></i
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"
+                                    ><i class="fab fa-pinterest-p"></i
+                                ></a>
+                            </li>
+                        </ul>
+                        <div class="language-switcher">
+                            <select class="form-select">
+                                <option selected>English</option>
+                                <option>Spanish</option>
+                                <option>Chinese</option>
+                                <option>Russian</option>
+                                <option>Turkish</option>
+                            </select>
+                        </div>
+                        <div class="currency-switcher">
+                            <select class="form-select">
+                                <option selected>$USD</option>
+                                <option>€EUR</option>
+                                <option>$FJD</option>
+                                <option>£FKP</option>
+                                <option>£GBP</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div
+    class="navbar-area"
+    ngStickyNav
+    stickyClass="sticky-box-shadow"
+    ngStickyNav
+    [ngClass]="{ 'bg-f9f9f9': router.url === '/' }"
+>
+    <div class="container-fluid">
+        <nav
+            class="navbar navbar-expand-lg navbar-light bg-light"
+            [class.active]="classApplied"
+        >
+            <a class="navbar-brand" routerLink="/"
+                ><img class="logo" src="assets/img/logo.png" alt="logo"
+            /></a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                (click)="toggleClass()"
+            >
+                <span class="burger-menu">
+                    <span class="top-bar"></span>
+                    <span class="middle-bar"></span>
+                    <span class="bottom-bar"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item megamenu">
+                        <a routerLink="/about" class="nav-link">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/order-tracking" class="nav-link"
+                            >Theo dõi đơn hàng</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            routerLink="/contact"
+                            routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            class="nav-link"
+                            >Liên hệ</a
+                        >
+                    </li>
+                </ul>
+                <ul class="navbar-nav for-responsive">
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item megamenu">
+                        <a routerLink="/about" class="nav-link">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/order-tracking" class="nav-link"
+                            >Theo dõi đơn hàng</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            routerLink="/contact"
+                            routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            class="nav-link"
+                            >Liên hệ</a
+                        >
+                    </li>
+                </ul>
+                <div class="others-option d-flex align-items-center">
+                    <div class="option-item">
+                        <form
+                            class="search-box"
+                            #searchproduct="ngForm"
+                            (ngSubmit)="onClickSubmit(searchproduct.value.text)"
+                        >
+                            <input
+                                ngModel
+                                name="text"
+                                [ngModel]=""
+                                type="text"
+                                class="input-search"
+                                placeholder="Tìm kiếm sản phẩm"
+                            />
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div
+                        id="dropdown"
+                        class="option-item nav-item dropdown"
+                        style="cursor: pointer"
+                    >
+                        <a (click)="openLogin()" class="user-account"
+                            ><i class="far fa-user"></i
+                        ></a>
+                        <div
+                            class="dropdown-menu action-form {{
+                                dropdownActive ? 'show' : ''
+                            }}"
+                            *ngIf="token == null"
+                        >
+                            <form
+                                [formGroup]="loginForm"
+                                (ngSubmit)="onSubmit()"
+                            >
+                                <p class="hint-text">
+                                    Đăng nhập bằng tài khoản mạng xã hội
+                                </p>
+                                <div class="form-group social-btn clearfix">
+                                    <a
+                                        href="javascript:void(0)"
+                                        (click)="loginWithFacebook()"
+                                        class="btn btn-secondary facebook-btn float-left"
+                                        ><i class="fab fa-facebook-f"></i>
+                                        Facebook</a
+                                    >
+                                    <a
+                                        id="loginGoogle"
+                                        class="btn btn-secondary google-btn float-right"
+                                        ><i class="fab fa-google"></i> Google</a
+                                    >
+                                </div>
+                                <div class="or-seperator"><b>hoặc</b></div>
+                                <div class="form-group">
+                                    <input
+                                        formControlName="email"
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="Tên tài khoản"
+                                        required="required"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        formControlName="password"
+                                        type="password"
+                                        class="form-control"
+                                        placeholder="Mật khẩu"
+                                        required="required"
+                                    />
+                                </div>
+                                <input
+                                    type="submit"
+                                    class="btn btn-primary btn-block"
+                                />
+                                <div class="text-center mt-2">
+                                    <a href="#">Quên mật khẩu?</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div
+                            class="dropdown-menu settings-profile {{
+                                dropdownActive ? 'show' : ''
+                            }}"
+                            *ngIf="token !== null"
+                        >
+                            <ul>
+                                <li>
+                                    <a
+                                        ><i class="far fa-user color-main"></i
+                                        >&nbsp;Profile</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        ><i class="fa fa-cog color-main"></i
+                                        >&nbsp;Settings</a
+                                    >
+                                </li>
+                                <li (click)="logout()">
+                                    <a
+                                        ><i
+                                            class="fa fa-sign-out color-main"
+                                        ></i
+                                        >&nbsp;Đăng xuất</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="option-item">
+                        <a routerLink="/compare" class="wishlist-btn">
+                            <i class="fas fa-code-compare"></i>
+                            <span>{{ compareLists.length }}</span>
+                        </a>
+                    </div>
+                    <div class="option-item">
+                        <a routerLink="/wishlist" class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                            <span>{{ wishListServices.length }}</span>
+                        </a>
+                    </div>
+                    <div class="option-item">
+                        <a routerLink="/cart" class="cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>{{ cartProducts.length }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<app-login-dialog #LoginModal></app-login-dialog>

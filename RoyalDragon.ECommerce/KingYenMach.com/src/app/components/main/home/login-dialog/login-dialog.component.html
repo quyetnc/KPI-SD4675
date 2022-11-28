@@ -1,0 +1,83 @@
+<ng-template #LoginModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">Đăng nhập</h4>
+        <button
+            type="button"
+            class="close"
+            (click)="modal.dismiss('Cross click')"
+            aria-label="Close"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="auth-login-form mt-2" [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="login-email" class="form-label">Email</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="john@example.com"
+                    formControlName="email"
+                    aria-describedby="login-email"
+                    tabindex="1"
+                    autofocus
+                    [(ngModel)]="email"
+                    [ngModelOptions]="{ standalone: true }"
+                />
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <label for="login-password">Password</label>
+                    <a routerLink="/pages/authentication/forgot-password-v1">
+                        <small>Quên mật khẩu?</small>
+                    </a>
+                </div>
+                <div class="input-group input-group-merge form-password-toggle">
+                    <input
+                        [type]="passwordTextType ? 'text' : 'password'"
+                        formControlName="password"
+                        class="form-control form-control-merge"
+                        tabindex="2"
+                        placeholder="·········"
+                        aria-describedby="login-password"
+                        [(ngModel)]="password"
+                        [ngModelOptions]="{ standalone: true }"
+                    />
+
+                    <div
+                        class="input-group-append"
+                        style="background-color: #e9ecef; padding: 9px"
+                    >
+                        <span class="input-group-text cursor-pointer">
+                            <i
+                                class="{{
+                                    passwordTextType
+                                        ? 'fa fa-eye'
+                                        : 'fa fa-eye-slash'
+                                }}"
+                                (click)="togglePasswordTextType()"
+                            ></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="btn btn-primary btn-block"
+                tabindex="4"
+                rippleEffect
+                (click)="onSubmit()"
+            >
+                Đăng nhập
+            </button>
+        </form>
+
+        <p class="text-center mt-2">
+            <span>Lần đầu ghé chúng tôi??</span>
+            <a routerLink="/pages/authentication/register-v1">
+                <span>&nbsp;Tạo tài khoản</span>
+            </a>
+        </p>
+    </div>
+</ng-template>

@@ -1,0 +1,235 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <section id="ngx-datatable-kitchen-sink">
+      <core-card-snippet>
+        <div class="row">
+          <div class="col-12 mb-50">
+            <div class="row">
+              <div class="col-2" *ngIf="selected.length == 0">
+                <button
+                  class="btn btn-primary ml-1"
+                  rippleEffect
+                  #openModal
+                  (click)="AddEditCategoryDialog(0)"
+                >
+                  <i data-feather="plus" class="mr-0 mr-sm-1"></i
+                  ><span class="d-none d-sm-inline-block">Thêm mới</span>
+                </button>
+              </div>
+              <div class="col-6"></div>
+              <div class="col-2">
+                <!-- <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    rippleEffect
+                    (click)="ExportCustomer()"
+                  >
+                   
+                  </button> -->
+              </div>
+              <div class="col-2">
+                <!-- <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    rippleEffect
+                    (click)="ExportCustomer()"
+                  >
+                    <span [data-feather]="'download'" [class]="'mr-25'"></span
+                    >Export Excel
+                  </button> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div
+              class="d-flex justify-content-between align-items-center m-1"
+            ></div>
+          </div>
+
+          <div class="col-12 text-items-center" *ngIf="isLoading">
+            <div class="spinner-grow text-primary mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-secondary mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-success mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-danger mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-warning mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-info mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <ngx-datatable
+          *ngIf="!isLoading"
+          #myTable
+          class="bootstrap core-bootstrap"
+          [rows]="listCategories"
+          [count]="listCategories.length"
+          [limit]="5"
+          [rowHeight]="58"
+          [scrollbarH]="true"
+          [footerHeight]="50"
+          [headerHeight]="50"
+          [rowHeight]="90"
+          [columnMode]="ColumnMode.force"
+        >
+          <ngx-datatable-column
+            name="Mã danh mục"
+            prop="categoryId"
+            [width]="120"
+          >
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-value="value"
+              let-row="row"
+            >
+              <div title="Double click to edit">
+                <div class="d-flex align-items-center">
+                  {{ row.categoryId }}
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Tên danh mục" prop="name" [width]="220">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center">
+                {{ row.name }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Hình ảnh" prop="image" [width]="120">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+                <img
+                  class="rounded-circle mr-1"
+                  src="{{ apiUrl + row.image }}"
+                  height="55"
+                  width="55"
+                  alt="datatable-avatar"
+                />
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Số lướng sản phẩm" prop="totalProduct" [width]="150">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center">
+                {{ row.totalProduct }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+
+          
+          <ngx-datatable-column name="Ngày tạo" prop="createOn" [width]="120">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center">
+                {{ row.createOn }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Hành động" [width]="160">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-stretch">
+                <!-- <div ngbDropdown container="body">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      ngbDropdownToggle
+                      data-toggle="dropdown"
+                    >
+                      Order
+                    </button>
+                    <div ngbDropdownMenu>
+                      <a
+                        ngbDropdownItem
+                        (click)="openOrderByCustomer(row.customerId)"
+                        ><i data-feather="shopping-cart" class="mr-50"></i
+                        ><span>Đặt hàng</span></a
+                      ><a
+                        ngbDropdownItem
+                        (click)="openInfoOrderOfCustomer(row.customerId)"
+                        ><i data-feather="info" class="mr-50"></i
+                        ><span>Thông tin đơn hàng</span></a
+                      >
+                    </div>
+                  </div> -->
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  rippleEffect
+                  (click)="AddEditCategoryDialog(row.categoryId)"
+                >
+                  Cập nhật
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  rippleEffect
+                  (click)="removeCategory(row.categoryId)"
+                >
+                  Xóa
+                </button>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </core-card-snippet>
+    </section>
+  </div>
+</div>
+
+<app-add-edit-category-dialog
+  #AddEditCategoryDialogModal
+  (resetDataPreviousPage)="afterCallApi($event)"
+></app-add-edit-category-dialog>
+<!-- <app-order-by-customer #OrderByCustomerModal> </app-order-by-customer>
+  <app-info-order-of-customer #InfoOrderOfCustomer></app-info-order-of-customer> -->

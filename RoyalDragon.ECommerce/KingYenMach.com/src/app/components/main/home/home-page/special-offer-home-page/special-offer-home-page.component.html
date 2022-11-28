@@ -1,0 +1,128 @@
+<div class="special-offer-area pb-70">
+    <div class="container">
+        <div class="section-heading-title d-flex justify-content-between align-items-center">
+            <h2>Ưu đãi đặc biệt</h2>
+            <ul class="default-countdown flex-wrap d-flex justify-content-center">
+                <li class="align-items-center flex-column d-flex justify-content-center">
+                    {{days}}
+                    <span class="days">Ngày</span>
+                </li>
+                <li class="align-items-center flex-column d-flex justify-content-center">
+                    {{hours}}
+                    <span class="hours">Giờ</span>
+                </li>
+                <li class="align-items-center flex-column d-flex justify-content-center">
+                    {{minutes}}
+                    <span class="minutes">Phút</span>
+                </li>
+                <li class="align-items-center flex-column d-flex justify-content-center">
+                    {{seconds}}
+                    <span class="seconds">Giây</span>
+                </li>
+            </ul>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6" *ngFor="let product of listProductBySpecialOffer">
+                <div class="special-offer-card">
+                    <div class="offer-image">
+                        <a routerLink="/{{ product.slug }}">
+                            <img [src]="env + product.img" alt="image">
+                        </a>
+                        <div class="new">Hot</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <a routerLink="/{{ product.slug }}">{{product.name}}</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">{{product.priceOutput | vnd}}</span>
+                            <span class="old-price">{{product.priceInput | vnd}}</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i *ngFor="let s of [1,2,3,4,5]"
+                                [ngClass]="_commonService.fRenderClassRating(s,product.star)"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-sm-6">
+                <div class="special-offer-card">
+                    <div class="offer-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-six/special-offer/special-offer2.png" alt="image">
+                        </a>
+                        <div class="new">New</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <a routerLink="/products-details">Clock</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$15.00</span>
+                            <span class="old-price">$20.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="special-offer-card">
+                    <div class="offer-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-six/special-offer/special-offer3.png" alt="image">
+                        </a>
+                        <div class="new">New</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <a routerLink="/products-details">Chair</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$65.00</span>
+                            <span class="old-price">$80.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="special-offer-card">
+                    <div class="offer-image">
+                        <a routerLink="/products-details">
+                            <img src="assets/img/home-six/special-offer/special-offer4.png" alt="image">
+                        </a>
+                        <div class="sale">Sale</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>
+                            <a routerLink="/products-details">Laptop</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">$450.00</span>
+                            <span class="old-price">$500.00</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+select {
+    width: 100%; 
+}
+
+span .default-select2 {
+    width: 100%;
+}
+
+span.select2-dropdown.select2-dropdown--below{
+    overflow-y: hidden;
+}

@@ -1,0 +1,54 @@
+﻿@model DocumentModel
+
+<div class="modal-header">
+    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+    <h4 class="modal-title">@(Model.IsAddNew? "Upload File" : "Update File")</h4>
+</div>
+<div class="modal-body">
+    @using (Html.BeginForm("UploadDocument", "Upload", FormMethod.Post,
+        new { enctype = "multipart/form-data", id = "UploadForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.HiddenFor(model => model.DocumentId)
+        <input type="hidden" name="CategoryId" value="1"/>
+        @Html.HiddenFor(model => model.Label)
+        <div class="form-horizontal">
+            <div class="col-sm-8 @(Model.IsAddNew ? "hidden" : string.Empty)">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FileName, htmlAttributes: new {@class = "col-sm-4 control-label col-lg-4"})
+                    <div class="col-sm-8 col-xs-8">
+                        <p class="form-control-static bold"><strong>@Html.DisplayFor(model => model.FileName)</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="dragalerts"></div>
+                <div id="uploadZone" class="dropzone">
+                    <div class="fallback">
+                        <input name="FileUpload" type="file" multiple/>
+                        <input type="submit" value="Upload"/>
+                    </div>
+                </div>
+                @*
+                <div id="documentUpload">
+                    <div id="drop-backdrop">
+                        <div class="text">Drag your file here to upload...</div>
+                    </div>
+                    <canvas id="drop-target" data-url='@Url.Action("UploadFile")'></canvas>
+                </div>*@
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    initDropzone('@Url.Action("UploadDocument")');
+
+    //if ($('#documentUpload').length > 0) {
+    //    prepareUploadFile();
+    //}
+</script>

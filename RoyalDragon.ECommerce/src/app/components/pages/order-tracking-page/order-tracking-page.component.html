@@ -1,0 +1,134 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Tra cứu đơn hàng</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Trang chủ</a></li>
+                    <li>Tra cứu đơn hàng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Tracking -->
+<div class="order-tracking-area ptb-100">
+    <div class="container" style="{{dataOrder?.description != null ? '' : ''}}">
+        <div class="row align-items-center" style="margin-top: 25px;">
+            <div class="col-md-12">
+                <!-- Horizontal Wizard -->
+                <section class="horizontal-wizard">
+                    <div id="stepper1" class="bs-stepper horizontal-wizard-example">
+                        <div class="bs-stepper-header" style="{{dataOrder?.description != null ? 'display:flex' : 'display:none'}}">
+                            <div class="step" data-target="#WaitingApprove">
+                                <button class="step-trigger">
+                                    <span class="bs-stepper-box">1</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Chờ xác nhận</span>
+                                        <span class="bs-stepper-subtitle">Đơn hàng bạn đang chờ xác nhận</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right font-medium-2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+                            <div class="step" data-target="#WaitingDelivery">
+                                <button class="step-trigger">
+                                    <span class="bs-stepper-box">2</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Chờ lấy hàng</span>
+                                        <span class="bs-stepper-subtitle">Nhân viên đang lấy hàng cho bạn</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right font-medium-2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+                            <div class="step" data-target="#DeliveryProcess">
+                                <button class="step-trigger">
+                                    <span class="bs-stepper-box">3</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Đang giao hàng</span>
+                                        <span class="bs-stepper-subtitle">Shipper đang giao hàng đến</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right font-medium-2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+                            <div class="step" data-target="#Done" *ngIf="dataOrder?.state != 4">
+                                <button class="step-trigger">
+                                    <span class="bs-stepper-box">4</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Giao hàng thành công</span>
+                                        <span class="bs-stepper-subtitle">Cảm ơn bạn đã tin dùng</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right font-medium-2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+                            <div class="step" data-target="#Cancel" *ngIf="dataOrder?.state == 4">
+                                <button class="step-trigger">
+                                    <span class="bs-stepper-box">4</span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Huỷ/Hoàn Tiền</span>
+                                        <span class="bs-stepper-subtitle">Chúng tôi không mong muốn điều này xảy ra</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="bs-stepper-content" style="display: none;">
+                            <form (ngSubmit)="onSubmit()">
+                                <div id="WaitingApprove" class="content">
+                                </div>
+                                <div id="WaitingDelivery" class="content ">
+                                </div>
+                                <div id="DeliveryProcess" class="content text-center">
+                                </div>
+                                <div id="Done" class="content text-center">
+                                </div>
+                                <div id="Cancel" class="content text-center">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <!--/ Horizontal Wizard -->
+            </div>
+        </div>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="warning-noresult" *ngIf="dataOrder?.state == 'fail'">
+                   Đơn hàng không tồn tại. Xin kiểm tra lại thông tin!
+                </div>
+                <div class="order-tracking-content" >
+                    <form [formGroup]="checkoutForm" (ngSubmit)="onClickSubmit()">
+                        <div class="form-group">
+                            <label>Mã đơn hàng 
+                                <span *ngIf="checkoutForm.get('codeOrder').errors && 
+                                checkoutForm.get('codeOrder').hasError('required')">(Yêu cầu nhập mà đơn hàng)</span>
+                            </label>
+                            <input 
+                                formControlName = "codeOrder"
+                                type="number" class="form-control"
+                                placeholder="Bạn có thể tìm thấy khi đặt hàng thành công!"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại 
+                                <span class="" *ngIf="checkoutForm.get('phone').errors && 
+                                checkoutForm.get('phone').hasError('required')">(Số điện thoại là bắt buộc)</span>
+                            </label>
+                            <input formControlName = "phone" type="tel" class="form-control" placeholder="Số điện thoại mà bạn đặt hàng">
+                        </div>
+                        <button type="submit" class="default-btn {{checkoutForm.status == 'INVALID' ? 'disabled' : ''}}" disabled="{{checkoutForm.status == 'INVALID' ? 'disabled' : ''}}">Tra cứu đơn hàng</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="order-tracking-image">
+                    <img src="assets/img/home-eight/blog/blog3.jpg" alt="order-tracking">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-subscribe></app-subscribe>

@@ -1,0 +1,11 @@
+export { CategoryService } from './services/category.service';
+export { ContactService } from './services/contact.service';
+export { CostService } from './services/cost.service';
+export { CustomerService } from './services/customer.service';
+export { ECommerceService } from './services/e-commerce.service';
+export { LoginService } from './services/login.service';
+export { OrderService } from './services/order.service';
+export { ProductService } from './services/product.service';
+export { ReviewService } from './services/review.service';
+export { UploadService } from './services/upload.service';
+export { UserService } from './services/user.service';

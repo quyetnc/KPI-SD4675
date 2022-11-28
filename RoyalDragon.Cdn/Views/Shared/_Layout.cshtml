@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>File List - Royal Dragon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/css/Brands/royaldragon-bootstrap.css" rel="stylesheet">
+    <link href="/css/intl-tel-input/css/intlTelInput.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/RoyalDragon/RoyalDragon.Select2.css" rel="stylesheet">
+    <link href="/css/css/select2.css" rel="stylesheet">
+    <link href="/css/select2-bootstrap-theme/select2-bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="/css/RoyalDragon/RoyalDragon.XEditable.css" rel="stylesheet">
+    <link href="/css/RoyalDragon/RoyalDragon.XEditable.Dynamic.css" rel="stylesheet">
+    <link href="/css/RoyalDragon/RoyalDragon.Datetimepicker.css" rel="stylesheet">
+    <link href="/css/RoyalDragon/RoyalDragon.PeoplePicker.css" rel="stylesheet">
+    <link href="/css/raty-js/jquery.raty.css" rel="stylesheet">
+    <link href="/css/dropzone/basic.css" rel="stylesheet">
+    <link href="/css/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/css/PagedList.css" rel="stylesheet">
+    <link href="/css/Site.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/css/RoyalDragon/RoyalDragon.Feedback.css" rel="stylesheet">
+    <link href="/css/royaldragon-style.css" rel="stylesheet" />
+    <script src="https://az416426.vo.msecnd.net/next/ai.2.min.js"></script>
+    <script src="~/lib/html2canvas.min.js"></script>
+    <script src="~/lib/summernote.min.js"></script>
+    <link href="~/lib/summernote.css" rel="stylesheet" />
+    <style id="inert-style">
+        [inert] {
+            pointer-events: none;
+            cursor: default;
+        }
+
+            [inert], [inert] * {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+    </style>
+</head>
+<body>
+    @*<div id="wrap" class="page-container">*@
+    <div class="navbar navbar-fixed-top navbar-default">
+        <div class="navbar-header">
+            <a class="app-logo" href="/" title="Royal Dragon"></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown" id="userMenu">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <div><span>Hoang Long Nguyen</span><br><span>admin@royaldragonit.com | ADMIN</span></div>
+                        <img alt="Thumbnail" class="employee-thumbnail img-rounded" src="~/images/logo/15646.jpg">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="/"><i class="fa fa-home"></i> Home page</a></li>
+                        <li><a href="https://login.o2f-it.com/adfs/portal/updatepassword/" rel="noreferrer" target="_blank"><i class="fa fa-unlock-alt"></i> Change Password</a></li>
+                        <li><a href="https://login.o2f-it.com/adfs/ls/?wa=wsignout1.0"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid" id="main">
+        <div class="row-fluid" id="mainRow">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @*<span class="loading"></span>*@
+                <div id="loader" style="margin: 0px; left: 44%; width: 77px; height: 77px"></div>
+                <!--Loaded async-->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div>
+    <div id="modal-lg" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                @*<span class="loading"></span>*@
+                <div id="loader" style="margin: 0px; left: 44%; width: 77px; height: 77px"></div>
+                <!--Loaded async-->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div>
+
+    <div id="modal-overlay" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @*<span class="loading"></span>*@
+                <div id="loader" style="margin: 0px; left: 44%; width: 77px; height: 77px"></div>
+            </div>
+        </div>
+    </div>
+    <span id="AALibUrl" data-intlTelInput="@Url.Content("~/Scripts/intl-tel-input/js/utils.js")"></span>
+    <script src="/js/jquery-2.2.4.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.js"></script>
+    <script src="/js/jquery.validate.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+    <script src="/js/raty-js/jquery.raty.js"></script>
+    <script src="/js/bootstrap/bootstrap.js"></script>
+    <script src="/js/intl-tel-input/js/intlTelInput-jquery.js"></script>
+    <script src="/js/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="/js/x-editable/inputs-ext/numeric/numeric.js"></script>
+    <script src="/js/x-editable/inputs-ext/customobject/customobject.js"></script>
+    <script src="/js/x-editable/inputs-ext/phone/phone.js"></script>
+    <script src="/js/x-editable/inputs-ext/select4/select4.js"></script>
+    <script src="/js/x-editable/inputs-ext/select4/select4-tags.js"></script>
+    <script src="/js/x-editable/inputs-ext/eonasdan-datetime/datetime.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/RoyalDragon/RoyalDragon.Datetimepicker.core.js"></script>
+    <script src="/js/select2.js"></script>
+    <script src="/js/RoyalDragon/RoyalDragon.Select2.fix.js"></script>
+    <script src="/js/RoyalDragon/RoyalDragon.XEditable.Dynamic.js"></script>
+    <script src="/js/RoyalDragon/RoyalDragon.Application.js"></script>
+    <script src="/js/LyncPresence/scripts/main.js"></script>
+    <script src="/js/clipboard/clipboard.js"></script>
+    <script src="/js/dropzone/dropzone.js"></script>
+    <script src="/js/RoyalDragon.Feedback.js"></script>
+    <script src="/js/GenericCustom.js"></script>
+    <script src="/js/TableFilter.js"></script>
+    <script src="/js/upload.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

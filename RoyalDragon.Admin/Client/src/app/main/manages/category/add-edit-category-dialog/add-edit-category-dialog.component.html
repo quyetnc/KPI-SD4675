@@ -1,0 +1,79 @@
+<ng-template #AddEditCategoryDialogModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">Category Information</h4>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="row">
+      <div class="col-6">
+        <label>Tên danh mục: </label>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Tên danh mục"
+            class="form-control"
+            [(ngModel)]="categoryData.name"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-group">
+          <label for="img">Hình ảnh</label>
+          <div class="media">
+            <a href="javascript:void(0);" class="mr-25">
+              <img
+                [src]="avatarImage"
+                class="rounded mr-50"
+                alt="profile image"
+                height="76"
+                width="80"
+              />
+            </a>
+            <!-- upload and reset button -->
+            <div class="media-body mt-75 ml-1">
+              <button
+                (click)="file.click()"
+                for="account-upload"
+                class="btn btn-sm btn-primary mb-75 mr-75"
+                rippleEffect
+              >
+                Tải ảnh lên
+              </button>
+              <input
+                type="file"
+                #file
+                id="account-upload"
+                hidden
+                accept="image/*"
+                (change)="uploadImage($event)"
+              />
+              <p>Các file cho phép JPG, GIF hoặc PNG.</p>
+            </div>
+            <!--/ upload and reset button -->
+          </div>
+          <!--/ header media -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">
+      Lưu lại
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModalAlert(modal)"
+      rippleEffect
+    >
+      Hủy bỏ
+    </button>
+  </div>
+</ng-template>

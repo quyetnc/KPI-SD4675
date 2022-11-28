@@ -1,0 +1,64 @@
+﻿.feedback {
+    /* fallback for linear gradient not supported by old browser */
+    background-color: #eac3b3;
+    background-image: linear-gradient(to left, #272674, #eac3b3);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 0.3em;
+    vertical-align: middle;
+}
+
+    .feedback:before {
+        border-bottom: 1.22em solid #eac3b3;
+        border-left: 1em solid transparent;
+        border-top: 1.22em solid #eac3b3;
+        content: "";
+        display: block;
+        left: -13px;
+        position: absolute;
+        top: 0;
+        z-index: 1502;
+    }
+
+.app-logo {
+    background: url('../images/logo/9.png'), linear-gradient(transparent, transparent) no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+}
+
+.notfound-image {
+    background-image: url('/MultiBranding/Home/GetFileByDocumentId/11');
+    background-size: 125px 125px;
+    display: block;
+    height: 125px;
+    margin: auto;
+    width: 125px;
+}
+
+.error-image {
+    background: url('/MultiBranding/Home/GetFileByDocumentId/7');
+    background-size: 125px 125px;
+    display: block;
+    height: 125px;
+    margin: auto;
+    width: 125px;
+}
+
+.unauthorized-small {
+    content: url('/MultiBranding/Home/GetFileByDocumentId/10');
+}
+
+.unauthorized {
+    background: url('/MultiBranding/Home/GetFileByDocumentId/10') no-repeat;
+    background-size: 200px 200px;
+    display: block;
+    height: 200px;
+    margin: auto;
+    width: 200px;
+}
+
+#userMenu img {
+    border-radius: 50%;
+}

@@ -1,0 +1,48 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<DocumentModel>
+
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                <div class="btn-group">
+                    <a class="btn-default btn" data-backdrop="false" data-keyboard="true" data-show="True" data-target="#modal" data-toggle="modal" href="@string.Concat("/Home/ShowUpdateModal/",item.DocumentId)" title="" data-original-title="Update File"><i class="fa fa-pencil-square-o"></i></a>
+                    <a title="Download File" class="btn btn-default download-file">
+                        <i class="fa fa-download"></i>
+                    </a>
+                    <a title="Copy Link" class="btn btn-default copy-link">
+                        <i class="fa fa-clipboard"></i>
+                    </a>
+                    <div class="hidden">
+                        <a class="download-link" href="@item.DownloadLink">@item.DownloadLink</a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="xeditable">@item.FileName</span>
+            </td>
+            <td>
+                <span class="xeditable">@item.Extension</span>
+            </td>
+            <td>
+                @item.CreatedBy
+            </td>
+            <td>
+                @item.CreatedDate
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="9" class="text-center">No result to display here.</td>
+    </tr>
+}
+<tr>
+    <td colspan="9">
+       @* @Html.PagedListPager(Model, x => "Page[" + x + "]", PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { OnBegin = "submitAdvancedSearch" }))*@
+    </td>
+</tr>

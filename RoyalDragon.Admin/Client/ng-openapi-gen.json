@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "z": "http://localhost:42496/swagger/v1/swagger.json",
+  "input": "http://localhost:42496/swagger/v1/swagger.json",
+  "": "http://localhost:42496/swagger/v1/swagger.json",
+  "output": "src/app/api",
+  "ignoreUnusedModels": false,
+  "modelPropertyNaming": "original"
+}
+ 

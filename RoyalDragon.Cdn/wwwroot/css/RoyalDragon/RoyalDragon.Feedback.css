@@ -1,0 +1,863 @@
+﻿/* Begin reusable CSS */
+/* To play the animation only one time, replace "animation-iteration-count: infinite" by "animation-fill-mode: forwards" */
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+
+    35% {
+        transform: translateX(4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    -webkit-animation-name: slide-in-left;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: slide-in-left;
+    -moz-animation-duration: 2s;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-name: slide-in-left;
+    -ms-animation-duration: 2s;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-name: slide-in-left;
+    -o-animation-duration: 2s;
+    -o-animation-fill-mode: forwards;
+    animation-name: slide-in-left;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28)
+}
+
+@-webkit-keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    35% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@-moz-keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    35% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@-ms-keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    35% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@-o-keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    35% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    1% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+
+    35% {
+        transform: translateX(-4%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    -webkit-animation-name: slide-in-right;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: slide-in-right;
+    -moz-animation-duration: 1s;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-name: slide-in-right;
+    -ms-animation-duration: 1s;
+    -ms-aanimation-fill-mode: forwards;
+    -o-animation-name: slide-in-right;
+    -o-animation-duration: 1s;
+    -o-animation-fill-mode: forwards;
+    animation-name: slide-in-right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in
+}
+
+@keyframes anim-menu {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes anim-curve-svg {
+    0% {
+        clip-path: path('M23.642 0s-1.46 17.539-13.193 29.963S.049 50.669.049 54.292s-.886 11.129 10.4 24.329 13.193 29.246 13.193 29.246z');
+    }
+
+    50% {
+        clip-path: path('M2147.74,1451s4.375,26.846-30.572,34.9-4.549,9.29-4.549,19.9-27.916,13.741,4.549,20.47,30.572,32.6,30.572,32.6Z');
+    }
+
+    100% {
+        clip-path: path('M2117,1451s-3.364,16.913-24.538,24.967-22.722,20.938-22.722,31.549,4.583,20.224,24.253,26.953,23.007,24.4,23.007,24.4Z');
+    }
+}
+
+.anim-in-right {
+    transition: right, .2s
+}
+
+.slide-in-right .anim-menu-2s {
+    transform: translateX(0);
+    transition: transform 0s 1s ease;
+}
+
+.slide-in-right .anim-menu-4s {
+    transform: translateX(0);
+    transition: transform 0s 1s ease;
+}
+
+.slide-in-right .anim-menu-6s {
+    transform: translateX(0);
+    transition: transform 0s 1s ease;
+}
+
+.slide-in-right .anim-menu-8s {
+    transform: translateX(0);
+    transition: transform 0s 1s ease;
+}
+
+/* Checkbox: taken and simplified from http://www.keenthemes.com/preview/metronic/theme/admin_1/form_controls.html */
+.feedback-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+    .feedback-checkbox > input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    .feedback-checkbox > span {
+        border: 2px solid #d9d9d9;
+        position: absolute;
+        top: 1px;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background: 0 0;
+    }
+
+        .feedback-checkbox > span:after {
+            content: '';
+            position: absolute;
+            display: none;
+        }
+
+    .feedback-checkbox > input:checked ~ span:after {
+        display: block;
+    }
+
+    .feedback-checkbox:hover > input:not([disabled]) ~ span,
+    .feedback-checkbox:hover > input:not([disabled]):checked ~ span {
+        border-color: grey;
+        webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .feedback-checkbox > span:after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+/* End reusable CSS */
+
+/*
+    LAYOUTS
+*/
+.layout-SVGShape {
+    width: 24px;
+    right: 0;
+    position: absolute;
+}
+
+.layout-feedback-ribbon {
+    /*height: 100vh;*/
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 10001;
+}
+
+/*
+    List Items
+    Navigations
+*/
+
+.list-item {
+    margin-left: auto;
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.list-item--link {
+    background: #6d2077;
+    border-radius: 30px;
+    color: #f9f9f9;
+    display: block;
+    line-height: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 18px;
+}
+
+    .list-item--link:focus,
+    .list-item--link:hover {
+        color: #f9f9f9;
+        text-decoration: none;
+    }
+
+    .list-item--link .icon__fa {
+        display: inline-block;
+        float: left;
+        position: relative;
+        bottom: 2px;
+    }
+
+    .list-item--link .text {
+        float: right;
+        position: relative;
+        bottom: 2px;
+    }
+
+.menu-item-bug {
+    width: 80px;
+}
+
+.menu-item-idea {
+    width: 95px;
+    padding-left: 22px;
+}
+
+.menu-item-details {
+    width: 110px;
+}
+
+.menu-item-survey {
+    width: 125px;
+}
+
+.b-button {
+    background: #6d2077;
+    border: none;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    margin-left: auto;
+    margin-bottom: .5rem;
+    outline: none;
+    position: relative;
+    /*right: -60%;*/
+}
+
+    .b-button .fa {
+        color: #fff;
+    }
+
+    .b-button .fa-close {
+        font-size: 2.2rem;
+    }
+
+.feedback-toggle {
+    cursor: pointer;
+}
+
+.list-item--feedback-ribbon {
+    position: relative;
+}
+
+.slide-in-left .list-item--feedback-ribbon .list-item {
+    transform: translateX(100px);
+    cursor: pointer;
+}
+
+.list-item--feedback-ribbon,
+.feedback-menu-group--list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.feedback-menu-group {
+    position: relative;
+    z-index: 10002;
+    top: 25px;
+}
+/* End menu CSS */
+
+/* Begin slidepanel CSS */
+@keyframes feedback-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.feedback-slidepanel {
+    width: 400px;
+    right: -400px;
+    position: fixed;
+    top: 50px;
+    height: -webkit-calc(100% - 52px);
+    height: -moz-calc(100% - 52px);
+    height: calc(100% - 52px);
+    z-index: 10003;
+    border-left: 1px solid #ddd;
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: width 0.25s, opacity 0.25s, -webkit-transform 0.25s;
+    transition: width 0.25s, opacity 0.25s, -webkit-transform 0.25s;
+    -o-transition: width 0.25s, opacity 0.25s, -o-transform 0.25s;
+    -moz-transition: width 0.25s, opacity 0.25s, transform 0.25s, -moz-transform 0.25s;
+    transition: width 0.25s, opacity 0.25s, transform 0.25s;
+    transition: width 0.25s, opacity 0.25s, transform 0.25s, -webkit-transform 0.25s, -moz-transform 0.25s, -o-transform 0.25s;
+}
+
+    .feedback-slidepanel.is-active {
+        opacity: 1;
+        -webkit-transform: translate3d(-400px, 0, 0);
+        -moz-transform: translate3d(-400px, 0, 0);
+        transform: translate3d(-400px, 0, 0);
+        -webkit-transition: width 0.25s, opacity 0.25s, -webkit-transform 0.25s;
+        transition: width 0.25s, opacity 0.25s, -webkit-transform 0.25s;
+        -o-transition: width 0.25s, opacity 0.25s, -o-transform 0.25s;
+        -moz-transition: width 0.25s, opacity 0.25s, transform 0.25s, -moz-transform 0.25s;
+        transition: width 0.25s, opacity 0.25s, transform 0.25s;
+        transition: width 0.25s, opacity 0.25s, transform 0.25s, -webkit-transform 0.25s, -moz-transform 0.25s, -o-transform 0.25s;
+    }
+
+    .feedback-slidepanel .panel-feedback {
+        height: 100%;
+        position: relative;
+        border-radius: 0;
+        background-color: white;
+        border: 1px solid lightgray;
+    }
+
+    .feedback-slidepanel > .panel-feedback .subpanel {
+        height: 100%;
+    }
+
+    .feedback-slidepanel > .panel-feedback .panel-heading {
+        height: 70px;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+        .feedback-slidepanel > .panel-feedback .panel-heading .title {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 50px;
+            width: calc(100% - 30px);
+        }
+
+        .feedback-slidepanel > .panel-feedback .panel-heading .icon__fa {
+            position: relative;
+            bottom: 15px;
+        }
+
+        .feedback-slidepanel > .panel-feedback .panel-heading .text {
+            display: inline-block;
+            width: calc(100% - 44px);
+            overflow: hidden;
+        }
+
+        .feedback-slidepanel > .panel-feedback .panel-heading .close [aria-hidden] {
+            font-size: 40px;
+        }
+
+    .feedback-slidepanel > .panel-feedback .panel-body {
+        height: calc(100% - 137px);
+        font-size: 15px;
+        overflow-y: auto;
+    }
+
+    .feedback-slidepanel > .panel-feedback .panel-footer {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        height: 70px;
+        border-radius: 0;
+        background-color: #fff;
+    }
+
+    .feedback-slidepanel .panel-footer .btn-cancel, .feedback-slidepanel .panel-footer .btn-submit {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .feedback-slidepanel .panel-footer .btn {
+        width: 96px;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .feedback-slidepanel .panel-footer .btn:hover {
+            filter: brightness(120%);
+        }
+
+        .feedback-slidepanel .panel-footer .btn + .btn {
+            margin-left: 10px;
+        }
+
+    .feedback-slidepanel .panel-footer .btn-cancel {
+        background-color: lightgray;
+        color: black;
+    }
+
+        .feedback-slidepanel .panel-footer .btn-cancel:hover {
+            background-color: gray;
+            color: white;
+        }
+
+    .feedback-slidepanel .panel-footer .btn-submit {
+        color: white;
+    }
+
+        .feedback-slidepanel .panel-footer .btn-submit .fa-spinner {
+            display: none;
+        }
+
+    .feedback-slidepanel form.form-sending .btn-submit .fa-spinner {
+        display: inline-block;
+    }
+
+    .feedback-slidepanel form.form-sending .btn-submit .fa-spinner {
+        display: inline-block;
+        margin-right: 8px
+    }
+
+@media (max-width: 767px) {
+    .feedback-slidepanel {
+        width: 100%;
+    }
+}
+/* End slidepanel CSS */
+
+/* Begin loader CSS */
+@keyframes ellipsis {
+    to {
+        width: 30px;
+    }
+}
+
+@-webkit-keyframes ellipsis {
+    to {
+        width: 30px;
+    }
+}
+
+.ellipsis:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 1500ms infinite;
+    animation: ellipsis steps(4, end) 1500ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+}
+
+.subpanel-loader {
+    height: 400px;
+    position: relative;
+}
+
+    .subpanel-loader .fa-spinner {
+        position: absolute;
+        top: 50%;
+        font-size: 80px;
+        display: block;
+        margin-top: -40px;
+        left: 50%;
+        margin-left: -40px;
+    }
+/* End loader CSS */
+
+/* Begin bug CSS */
+.subpanel-bug .note-editor {
+    margin-bottom: 0;
+}
+
+.subpanel-bug .has-error .note-editor {
+    border-color: #a94442;
+}
+
+.subpanel-bug .form-control {
+    border-color: lightgray;
+}
+
+.subpanel-bug .has-error .form-control {
+    border-color: #a94442;
+}
+
+.subpanel-bug .form-control[disabled] {
+    background-color: lightgray;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.subpanel-bug .input-group-addon {
+    border-color: lightgray;
+    background-color: lightgray;
+}
+
+.subpanel-bug .has-error .input-group-addon {
+    color: #555;
+}
+/* End bug CSS */
+
+/* Begin idea CSS */
+.subpanel-idea .note-editor {
+    margin-bottom: 0;
+}
+
+.subpanel-idea .has-error .note-editor {
+    border-color: #a94442;
+}
+
+.subpanel-idea .form-control {
+    border-color: lightgray;
+}
+
+.subpanel-idea .has-error .form-control {
+    border-color: #a94442;
+}
+
+.subpanel-idea .form-control[disabled] {
+    background-color: lightgray;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.subpanel-idea .input-group-addon {
+    border-color: lightgray;
+    background-color: lightgray;
+}
+
+.subpanel-idea .has-error .input-group-addon {
+    color: #555;
+}
+
+.subpanel-idea label.feedback-checkbox {
+    font-size: 13px;
+}
+/* End idea CSS */
+
+/* Begin details CSS */
+.subpanel-details .title .icon {
+    margin-bottom: 44px;
+}
+
+.subpanel-details .panel-body {
+    padding-top: 34px;
+}
+
+.subpanel-details .media + .media {
+    margin-top: 34px;
+}
+
+.subpanel-details .media-left {
+    padding-right: 18px;
+}
+
+.subpanel-details .media-object {
+    width: 72px;
+}
+
+.subpanel-details .media-heading {
+    margin-bottom: 0;
+}
+
+.subpanel-details .label-function {
+    color: darkgray;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.subpanel-details .label-fullname {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.subpanel-details .media-body {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.subpanel-details .fa + a {
+    margin-right: 8px;
+}
+
+.subpanel-details .fa-envelope {
+    color: dodgerblue;
+}
+
+.subpanel-details .fa-skype {
+    color: deepskyblue;
+}
+
+.subpanel-details .fa-user {
+    color: slateblue;
+}
+/* End details CSS */
+
+/* Begin survey CSS */
+.subpanel-details .title .icon {
+}
+
+.feedback-rating {
+    direction: rtl;
+}
+
+    .feedback-rating > input {
+        display: none;
+    }
+
+    .feedback-rating > label {
+        padding: 10px 8px;
+        cursor: pointer;
+        font-size: 40px;
+        font-family: FontAwesome;
+        transition: all .2s;
+    }
+
+        .feedback-rating > label:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        .feedback-rating:hover > input + label:before,
+        .feedback-rating > label:before {
+            content: '\f006';
+            color: silver;
+        }
+
+        .feedback-rating > input:checked + label:before,
+        .feedback-rating > input:checked ~ label:before,
+        .feedback-rating > label:hover:before,
+        .feedback-rating > label:hover ~ label:before {
+            content: '\f005';
+            color: gold;
+        }
+
+    .feedback-rating:hover > input + label:before,
+    .feedback-rating:hover > input ~ label:before {
+        content: '\f006';
+        color: silver;
+    }
+
+    .feedback-rating:hover > input + label:hover ~ label:before,
+    .feedback-rating:hover > input + label:hover:before {
+        content: '\f005';
+        color: gold;
+    }
+
+.feedback-slidepanel .btn-skip-survey {
+    color: darkgray;
+    text-decoration: underline;
+    margin-top: 8px;
+    font-size: 12px;
+}
+/* End survey CSS */
+
+/*
+    UTILITY Classes
+*/
+
+.is-hidden {
+    display: none
+}
+
+.SVGShape-curve-anim {
+    animation: 1s anim-curve-svg forwards;
+}
+
+.anim-is-closed {
+    animation: 1s anim-curve-svg reverse
+}
+
+.is-faded {
+    opacity: 0
+}
+
+.no-bullet {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.is-opened .layout-SVGShape {
+    right: -25%;
+}
+
+.is-opened .feedback-menu-group {
+    right: 10%;
+}
+
+.is-opened .b-button {
+    right: -50%;
+}
+
+.is-closed {
+    height: 0px;
+    width: 24px;
+}
+
+.is-closed .b-button--open .fa {
+    margin-left: -30px;
+}
+
+    .is-closed .feedback-menu-group--list {
+        right: -128px;
+        position: absolute;
+    }
+
+    .is-closed .layout-SVGShape {
+        right: 0;
+    }

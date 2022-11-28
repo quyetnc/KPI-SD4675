@@ -1,0 +1,16 @@
+@import "../products-details-page/products-details-page.component.scss";
+
+.products-add-to-cart {
+    input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-outer-spin-button {  
+        opacity: 1;
+    }
+}
+.products-details-tabs {
+    .products-review-comments {
+        .user-review {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

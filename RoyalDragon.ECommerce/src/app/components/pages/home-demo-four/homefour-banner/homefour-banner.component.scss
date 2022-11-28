@@ -1,0 +1,199 @@
+.creative-home-area {
+    background-color: #f5f5f5;
+    padding: {
+        top: 120px;
+        bottom: 150px;
+    };
+    .container-fluid {
+        padding: {
+            left: 150px;
+            right: 150px;
+        };
+    }
+}
+.creative-home-item {
+    .creative-content {
+        position: relative;
+        z-index: 1;
+
+        .sub-title {
+            color: var(--mainColor);
+            margin-bottom: 12px;
+            font-size: 22px;
+            display: block;
+        }
+        h1 {
+            font-size: 85px;
+            margin-bottom: 15px;
+        }
+        p {
+            font: {
+                size: 22px;
+                weight: 400;
+            };
+        }
+        .default-btn {
+            margin-top: 10px;
+        }
+    }
+    .creative-home-image {
+        text-align: center;
+
+        img {
+            width: auto !important;
+            display: inline-block !important;
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .creative-home-area {
+        padding: {
+            top: 60px;
+            bottom: 150px;
+        };
+        .container-fluid {
+            padding: {
+                right: calc(var(--bs-gutter-x) * 0.5);
+                left: calc(var(--bs-gutter-x) * 0.5);
+            };
+        }
+    }
+    .creative-home-item {
+        .creative-content {
+            .sub-title {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 15px;
+            }
+            .default-btn {
+                margin-top: 0;
+            }
+        }
+    }
+    .creative-home-image {
+        margin-top: 25px;
+        text-align: center;
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {
+
+    .creative-home-area {
+        .container-fluid {
+            max-width: 540px;
+        }
+    }
+
+}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .creative-home-area {
+        padding: {
+            top: 80px;
+            bottom: 150px;
+        };
+        .container-fluid {
+            max-width: 720px;
+            padding: {
+                right: calc(var(--bs-gutter-x) * 0.5);
+                left: calc(var(--bs-gutter-x) * 0.5);
+            };
+        }
+    }
+    .creative-home-item {
+        .creative-content {
+            .sub-title {
+                font-size: 18px;
+            }
+            h1 {
+                font-size: 50px;
+            }
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+    .creative-home-image {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .creative-home-area {
+        .container-fluid {
+            padding: {
+                left: 100px;
+                right: 100px;
+            };
+        }
+    }
+    .creative-home-item {
+        .creative-content {
+            .sub-title {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            h1 {
+                font-size: 55px;
+                margin-bottom: 12px;
+            }
+            p {
+                font-size: 18px;
+            }
+            .default-btn {
+                margin-top: 5px;
+            }
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+    .creative-home-item {
+        .creative-content {
+            .sub-title {
+                font-size: 18px;
+            }
+            h1 {
+                font-size: 63px;
+            }
+            p {
+                font-size: 18px;
+            }
+            .default-btn {
+                margin-top: 5px;
+            }
+        }
+    }
+
+}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {
+
+    .creative-home-area {
+        .container-fluid {
+            max-width: 1900px;
+        }
+    }
+
+}

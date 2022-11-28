@@ -1,0 +1,194 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Shop Full Width</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>Shop</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products -->
+<div class="products-area ptb-100">
+    <div class="container">
+        <div class="vaxim-grid-sorting row align-items-center">
+            <div class="col-lg-6 col-md-6 result-count">
+                <div class="d-flex align-items-center">
+                    <p>
+                        We found
+                        <span class="count">{{ listProduct.length }}</span>
+                        products available for you
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ordering">
+                <div class="select-box">
+                    <label>Sort By:</label>
+                    <!-- <input [(ngModel)]="CopyText"> -->
+                    <select (change)="mySelectHandler($event.target.value)">
+                        <option ngValue="0">Default</option>
+                        <!-- <option ngValue="1">Popularity</option> -->
+                        <option ngValue="2">Latest</option>
+                        <option ngValue="3">Price: low to high</option>
+                        <option ngValue="4">Price: high to low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="col-lg-4 col-md-6 col-sm-6"
+                *ngFor="
+                    let content of listProduct
+                        | paginate: { itemsPerPage: 9, currentPage: shopGrid }
+                "
+            >
+                <div class="single-products-box">
+                    <a class="d-block">
+                        <img
+                            [src]="apiUrl + content.img"
+                            alt="products-image"
+                        />
+                    </a>
+                    <ul class="products-button">
+                        <li>
+                            <button
+                                type="button"
+                                (click)="
+                                    triggerModal(modalData); addToModal(content)
+                                "
+                            >
+                                <i class="fas fa-search-plus"></i>
+                                <span class="tooltip-label"> Quick View </span>
+                            </button>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-exchange-alt"></i>
+                                <span class="tooltip-label">Compare</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button
+                                class="add-to-cart-btn"
+                                (click)="addToWishlist(content)"
+                            >
+                                <i class="far fa-heart"></i>
+                                <span class="tooltip-label">
+                                    Add to Wishlist
+                                </span>
+                            </button>
+                            
+                        </li>
+                    </ul>
+                    <span class="sale" *ngIf="content.isSell"> SALE </span>
+                    <span class="out-of-stock" *ngIf="content.isFeather">
+                        Out of Stock
+                    </span>
+                    <span class="hot" *ngIf="content.isPopular">HOT</span>
+                    <div class="content">
+                        <h3>
+                            <a>
+                                {{ content.name }}
+                            </a>
+                        </h3>
+                        <button
+                            class="add-to-cart-btn"
+                            (click)="addToCart(content)"
+                        >
+                            Add to cart <i class="fas fa-cart-plus"></i>
+                        </button>
+                        <div class="price">
+                            <span class="old-price" *ngIf="content.priceInput">
+                                {{ content.priceInput | vnd}} 
+                            </span>
+                            <span class="new-price">
+                                {{ content.priceOutput | vnd }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="pagination-area">
+                    <pagination-controls
+                        previousLabel=""
+                        nextLabel=""
+                        (pageChange)="shopGrid = $event"
+                    ></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #modalData let-modal>
+    <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+    >
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="modal-body" *ngIf="modalProduct">
+        <div
+            class="row align-items-center"
+            *ngFor="let product of modalProduct"
+        >
+            <div class="col-lg-6 col-md-6">
+                <div class="image">
+                    <img [src]="apiUrl + product.img" alt="image" />
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="content">
+                    <h3>{{ product.name }}</h3>
+                    <div class="price">
+                        <span class="new-price">
+                            {{ product.priceOutput | vnd }}
+                        </span>
+                        <!-- <span class="old-price" *ngIf="product.oldPrice">
+                        {{ product.currencyType }}{{ product.oldPrice }}
+                    </span> -->
+                    </div>
+                    <p>{{ product.shortDescription }}</p>
+                    <ul class="products-info">
+                        <li>
+                            <span>Vendor:</span>
+                            <!-- <a routerLink="/shop-full-width-1">{{ product.vendor }}</a> -->
+                        </li>
+                        <li *ngIf="product.inStock">
+                            <span>Availability:</span>
+                            In stock
+                        </li>
+                        <li>
+                            <span>Categories:</span>
+                            <a routerLink="/shop-full-width-1">Hoodie</a>
+                        </li>
+                    </ul>
+                    <div class="products-add-to-cart">
+                        <button
+                            (click)="addToCart(product)"
+                            type="submit"
+                            class="default-btn"
+                        >
+                            <i class="fas fa-shopping-bag"></i> ADD TO CART
+                        </button>
+                        <a
+                            routerLink="/wishlist"
+                            title="Add to Wishlist"
+                            class="add-to-wishlist-btn"
+                            ><i class="far fa-heart"></i
+                        ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

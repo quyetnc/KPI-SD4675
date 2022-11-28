@@ -1,0 +1,49 @@
+<div class="special-deals-area pb-70">
+    <div class="container">
+        <div class="section-heading-title">
+            <h2>Deal hấp dẫn</h2>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-3 col-sm-6" *ngFor="let product of listProductsBySpecial">
+                <div class="special-deals-card">
+                    <div class="deals-image">
+                        <a routerLink="/{{ product.slug }}">
+                            <img [src]="env + product.img" alt="image">
+                        </a>
+                        <ul class="products-action-list">
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/{{ product.slug }}">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="new">Hot</div>
+                    </div>
+                    <div class="deals-content">
+                        <h3>
+                            <a routerLink="/{{ product.slug }}">{{product.name}}</a>
+                        </h3>
+                        <div class="price">
+                            <span class="new-price">{{product.priceOutput | vnd}}</span>
+                            <span class="old-price">{{product.priceInput | vnd}}</span>
+                        </div>
+                        <ul class="rating">
+                            <li><i *ngFor="let s of [1,2,3,4,5]"
+                                [ngClass]="_commonService.fRenderClassRating(s,product.star)"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

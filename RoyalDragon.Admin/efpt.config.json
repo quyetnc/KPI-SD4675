@@ -1,0 +1,149 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "RoyalDragonDbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models\/Entities",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "RoyalDragon.Admin",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Configuration_Parameters]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Contact]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Cost]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Customer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[HistoryCallCustomer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Inventory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InventoryHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Order]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductOrder]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Review]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Setting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[vCost]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vListCategoryHomePage]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vListDetailOrder]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vListOrder]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vLogin]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vProductDetail]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[vReview]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[Init_ECommerce_Page]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[RD_GetProductDetail]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Rd_Register]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[RD_Setting]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "mail.RoyalDragonDb",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

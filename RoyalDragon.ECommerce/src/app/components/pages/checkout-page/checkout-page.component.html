@@ -1,0 +1,162 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Thanh toán</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Trang chủ</a></li>
+                    <li>Thanh toán</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout -->
+<div class="checkout-area ptb-100">
+    <div class="container">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="billing-details">
+                        <h3><span>Chi tiết thanh toán</span></h3>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="fullname">
+                                        Họ tên
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        id="fullname"
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="fullname"
+                                        placeholder="Nhập họ tên"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="address">
+                                        Địa chỉ
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        id="address"
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="address"
+                                        placeholder="Nhập địa chỉ"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="address">
+                                        Số điện thoại
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input
+                                        id="city"
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="phone"
+                                        placeholder="Nhập số điện thoại"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="order-details">
+                        <h3><span>Đơn hàng của bạn</span></h3>
+                        <div class="order-table table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr *ngFor="let product of products;">
+                                        <td class="product-name">
+                                            <a
+                                                [routerLink]="[
+                                                    '/products',
+                                                    product.slug
+                                                ]"
+                                            >
+                                                {{ product.title }}
+                                            </a>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="subtotal-amount">
+                                                ${{
+                                                    product.currentPrice *
+                                                    product.quantity
+                                                }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-subtotal">
+                                            <span>Tổng tiền trong giỏ hàng</span>
+                                        </td>
+                                        <td class="order-subtotal-price">
+                                            <span class="order-subtotal-amount">
+                                                ${{ total | vnd }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="order-shipping">
+                                            <span>Phí giao hàng</span>
+                                        </td>
+                                        <td class="shipping-price">
+                                            <span>free</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="total-price">
+                                            <span>Tổng tiền</span>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="subtotal-amount">
+                                                ${{ total | vnd }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="payment-box">
+                            <div class="payment-method">
+                                <p>
+                                    <input
+                                        type="radio" 
+                                        id="cash-on-delivery" 
+                                        name="radio-group" 
+                                        checked
+                                    />
+                                    <label for="cash-on-delivery">
+                                        Thanh toán khi giao hàng
+                                    </label>
+                                    Thanh toán bằng tiền mặt khi giao hàng.
+                                </p>
+                            </div>
+                            <button
+                                type="submit"
+                                [disabled]="!checkoutForm.valid"
+                                class="default-btn"
+                            >
+                                <i class="bx bx-paper-plane"></i>Đặt hàng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-subscribe></app-subscribe>

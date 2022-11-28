@@ -1,0 +1,118 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Liên hệ với chúng tôi</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Trang chủ</a></li>
+                    <li>Liên hệ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+<div class="contact-area ptb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="contact-content">
+                    <h2>Xin chào! Hãy cho chúng tôi biết về suy nghĩ của bạn</h2>
+                    <p>Liên hệ với chúng tôi với thông tin chi tiết của bạn và sẵn sàng bắt đầu. Hãy cung cấp cho chúng tôi một tin nhắn và liên hệ với chúng tôi!</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="contact-image">
+                    <img src="assets/img/home-seven/video.jpg" alt="contact-image">
+                </div>
+            </div>
+        </div>
+        <div class="contact-form-area">
+            <div class="row m-0">
+                <div class="col-lg-8 col-md-12 p-0">
+                    <div class="contact-form">
+                        <h3>Gửi tin nhắn cho chúng tôi</h3>
+                        <form id="contactForm" [formGroup]="contactForm">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Tên của bạn</label>
+                                        <input type="text" formControlName="name" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Địa chỉ Email</label>
+                                        <input type="address" formControlName="address" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" formControlName="phone" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Tiêu đề</label>
+                                        <input type="text" formControlName="title" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Tin nhắn</label>
+                                        <textarea class="form-control" formControlName="message" cols="30" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" formControlName="accept" class="form-check-input" id="checkme">
+                                        <label class="form-check-label" for="checkme">
+                                            Chấp nhận<a routerLink="/terms-conditions">Điều khoản Dịch vụ</a> và <a routerLink="/privacy-policy">Chính sách Bảo mật</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <button type="button" (click)="onSubmit()" class="default-btn"><i class="far fa-paper-plane"></i> Gửi tin nhắn</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 p-0">
+                    <div class="contact-info">
+                        <h3>Thông tin Liên hệ</h3>
+                        <ul class="info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                               Vinhome Quận 9, TP Hồ Chí Minh, Việt Nam
+                            </li>
+                            <li>
+                                <i class="fas fa-mobile-alt"></i>
+                                <a href="tel:+84973730729">(+84)973 730-729</a>
+                            </li>
+                            <li>
+                                <i class="far fa-envelope"></i>
+                                <a href="mailto:admin@royaldragonit.com">admin@royaldragonit.com</a>
+                            </li>
+                        </ul>
+                        <h3>Follow Us</h3>
+                        <ul class="social-links">
+                            <li><a href="#" target="_blank">Facebook</a></li>
+                            <li><a href="#" target="_blank">Twitter</a></li>
+                            <li><a href="#" target="_blank">Instagram</a></li>
+                            <li><a href="#" target="_blank">Pinterest</a></li>
+                            <li><a href="#" target="_blank">Linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-subscribe></app-subscribe>

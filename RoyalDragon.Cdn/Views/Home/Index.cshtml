@@ -1,0 +1,70 @@
+﻿@using System.Web.Mvc.Ajax
+@model UploadViewModel
+
+@{
+    ViewBag.Title = "File List";
+}<div class="row upload-table">
+   <table class="table table-striped table-bordered table-fixed-header table-condensed table-responsive">
+      <form action="/Upload/Search" class="form-inline" data-ajax="true" data-ajax-begin="showLoadingBar" data-ajax-complete="hideLoadingBar" data-ajax-failure="handleFailure" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="handleSuccess" data-ajax-update="#search-results" id="advancedSearchForm" method="post"></form>
+      <input data-val="true" data-val-number="The field Page must be a number." data-val-required="The Page field is required." id="SearchModel_Page" name="SearchModel.Page" type="hidden" value="0"/>
+      <thead>
+         <tr>
+            <th class="w10p">
+                    <a class="btn-success btn" data-backdrop="false" data-keyboard="true" data-show="True" data-target="#modal" data-toggle="modal" href="/Home/ShowUploadModal/" title="" data-original-title="Upload file to server"><i class="fa fa-plus"></i> Upload File</a>
+            </th>
+            <th>
+               <input class="form-control input-field" id="SearchModel_Label" name="SearchModel.Label" placeholder="Search on file name" type="text" value="">
+            </th>
+            <th class="w10p">
+               <input class="form-control input-field" id="SearchModel_Extension" name="SearchModel.Extension" placeholder="Search on file extension" type="text" value="">
+            </th>
+            <th class="w10p">
+               <select class="select2-ajax toSelect2 select2-hidden-accessible" data-action="/ContentDeliveryNetwork/Upload/GetEmployeeListForDropDown" data-control="select2" data-on-change="submitForm" data-placeholder="Select employee" data-target="#advancedSearchForm" data-val="true" data-val-number="The field CreatedById must be a number." id="SearchModel_CreatedById" name="SearchModel.CreatedById" tabindex="-1" aria-hidden="true"></select>
+            </th>
+            <th class="action-header-column">
+               <button type="submit" class="btn btn-primary">Search</button>
+               <a onclick="showLoadingBar()" href="/" class="btn btn-warning" data-toggle="tooltip" title="" data-original-title="Reset filters"><i class="fa fa-times"></i></a>
+            </th>
+         </tr>
+         <tr>
+            <th class="text-center">Action</th>
+            <th>
+               File Name
+            </th>
+            <th>
+               Extension
+            </th>
+            <th>
+               Created By
+            </th>
+            <th>
+               Created Date
+            </th>
+         </tr>
+      </thead>
+      <tbody id="search-results">
+          @await Html.PartialAsync("Partials/_DocumentList", Model.DocumentModels)
+            <tr>
+            <td colspan="9">
+               <div class="pagination-container">
+                  <ul class="pagination">
+                     <li class="active"><a>1</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[2]">2</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[3]">3</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[4]">4</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[5]">5</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[6]">6</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[7]">7</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[8]">8</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[9]">9</a></li>
+                     <li><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[10]">10</a></li>
+                     <li class="disabled PagedList-ellipses"><a>…</a></li>
+                     <li class="PagedList-skipToNext"><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[2]" rel="next">»</a></li>
+                     <li class="PagedList-skipToLast"><a data-ajax="true" data-ajax-begin="submitAdvancedSearch" href="Page[1556]">»»</a></li>
+                  </ul>
+               </div>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>

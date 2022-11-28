@@ -1,0 +1,236 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <section id="ngx-datatable-kitchen-sink">
+      <core-card-snippet>
+        <div class="row">
+          <div class="col-12 mb-50">
+            <div class="row">
+              <div class="col-2" *ngIf="selected.length == 0">
+                <button
+                  class="btn btn-primary ml-1"
+                  rippleEffect
+                  #openModal
+                  (click)="AddEditCustomerDialog(0)"
+                >
+                  <i data-feather="plus" class="mr-0 mr-sm-1"></i
+                  ><span class="d-none d-sm-inline-block">Thêm mới</span>
+                </button>
+              </div>
+              <div class="col-6"></div>
+              <div class="col-2">
+                <label class="btn btn-outline-primary">
+                  <span>
+                    <span [data-feather]="'upload'" [class]="'mr-25'"></span>
+                    Import Excel
+                  </span>
+                  <input
+                    type="file"
+                    accept=".xls,.xlsx"
+                    style="visibility: hidden; width: 0px"
+                    (change)="importFileAction($event)"
+                  />
+                </label>
+
+                <!-- <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  rippleEffect
+                  (click)="ExportCustomer()"
+                >
+                 
+                </button> -->
+              </div>
+              <div class="col-2">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  rippleEffect
+                  (click)="ExportCustomer()"
+                >
+                  <span [data-feather]="'download'" [class]="'mr-25'"></span
+                  >Export Excel
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div
+              class="d-flex justify-content-between align-items-center m-1"
+            ></div>
+          </div>
+
+          <div class="col-12 text-items-center" *ngIf="isLoading">
+            <div class="spinner-grow text-primary mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-secondary mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-success mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-danger mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-warning mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-info mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light mr-1" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <ngx-datatable
+          *ngIf="!isLoading"
+          #myTable
+          class="bootstrap core-bootstrap"
+          [rows]="listCustomers"
+          [count]="listCustomers.length"
+          [limit]="5"
+          [rowHeight]="58"
+          [scrollbarH]="true"
+          [footerHeight]="50"
+          [headerHeight]="50"
+          [rowHeight]="90"
+          [columnMode]="ColumnMode.force"
+        >
+          <ngx-datatable-column
+            name="Tên khách hàng"
+            prop="fullName"
+            [width]="200"
+          >
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-value="value"
+              let-row="row"
+            >
+              <div title="Double click to edit">
+                <div class="d-flex align-items-center">
+                  {{ row.fullName }}
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Số điện thoại" prop="phone" [width]="120">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center"
+              (click)="fCallPhone(row.phone)"
+              style="cursor: pointer;">
+                {{ row.phone }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Địa chỉ" prop="address" [width]="120">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center">
+                {{ row.address }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Người tạo" prop="createBy" [width]="120">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-center">
+                {{ row.createBy }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Hành động" [width]="160">
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-row="row"
+              let-value="value"
+            >
+              <div class="d-flex align-items-stretch">
+                <div ngbDropdown container="body">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    ngbDropdownToggle
+                    data-toggle="dropdown"
+                  >
+                    Order
+                  </button>
+                  <div ngbDropdownMenu>
+                    <a
+                      ngbDropdownItem
+                      (click)="openOrderByCustomer(row.customerId)"
+                      ><i data-feather="shopping-cart" class="mr-50"></i
+                      ><span>Đặt hàng</span></a
+                    ><a
+                    ngbDropdownItem
+                    (click)="openInfoOrderOfCustomer(row.customerId)"
+                    ><i data-feather="info" class="mr-50"></i
+                    ><span>Thông tin đơn hàng</span></a
+                  >
+                  <a ngbDropdownItem
+                  (click)="openHistoryCallCustomer(row.customerId)">
+                  <i data-feather="phone-call" class="mr-50"></i><span>Lịch sử cuộc gọi</span>
+                </a>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  rippleEffect
+                  (click)="AddEditCustomerDialog(row.customerId)"
+                >
+                  Cập nhật
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  rippleEffect
+                  (click)="RemoveCustomer(row.customerId)"
+                >
+                  Xóa
+                </button>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </core-card-snippet>
+    </section>
+  </div>
+</div>
+
+<app-add-edit-customer-dialog
+  #AddEditCustomerDialogModal
+  (resetDataPreviousPage)="afterCallApi($event)"
+></app-add-edit-customer-dialog>
+<app-order-by-customer #OrderByCustomerModal> </app-order-by-customer>
+<app-info-order-of-customer #InfoOrderOfCustomer></app-info-order-of-customer>
+<app-history-call-customer #HistoryCallCustomer></app-history-call-customer>

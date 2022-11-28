@@ -1,0 +1,19 @@
+@import "@core/scss/angular/libs/datatables.component.scss";
+@import "@core/scss/base/pages/app-user.scss";
+
+.datatable-scroll {
+  width: auto !important;
+}
+@import "@core/scss/angular/libs/select.component.scss";
+.custom-button {
+  width: 100%;
+}
+.text-items-center {
+  text-align: center;
+}
+.custom-button-marginleft {
+  margin-left: 5px;
+}
+.datatable-header-cell-wrapper,.datatable-body-cell-label{
+  margin: auto !important;
+}

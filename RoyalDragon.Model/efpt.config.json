@@ -1,0 +1,53 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "ContentDeliveryNetworkContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "ContentDeliveryNetwork\/Entities",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "RoyalDragon.Model",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[PublicDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Ressource]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RessourceType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserAgentStatistics]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-L99B6H4.ContentDeliveryNetwork",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

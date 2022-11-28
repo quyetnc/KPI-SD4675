@@ -1,0 +1,17 @@
+@import "../../../common/products/products.component.scss";
+.align-items-center {
+    align-items: center !important;
+}
+.single-products-box > a > img {
+    width: 416.01px;
+    height: 416.01px;
+}
+.single-products-box .content {
+    background-color: rgba(244, 236, 194, 0.7);
+    padding-right: 120px;
+}
+.single-products-box .content h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

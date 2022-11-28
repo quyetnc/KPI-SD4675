@@ -1,0 +1,65 @@
+<ng-template #OrderOfCustomerModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">Order Infomation</h4>
+    <button
+      type="button"
+      class="close"
+      (click)="closeModalAlert(modal)"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="table-responsive">
+      <table class="table table-hover-animation">
+        <thead>
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Số lượng sản phẩm</th>
+            <th>Tổng tiền</th>
+            <th>Ngày tạo đơn hàng</th>
+            <th>Trạng thái đơn hàng</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of listOrder; index as i">
+            <td>
+              {{ row.orderId }}
+            </td>
+            <td>{{ row.quantityProduct }}</td>
+            <td>{{ row.totalMoney|vnd }}</td>
+            <td>{{ row.createOn }}</td>
+            <td>
+              <span class="badge badge-pill badge-light-primary mr-1"
+                >Chờ thanh toán</span
+              >
+            </td>
+            <td class="overflow-hidden">
+              <button
+                type="button"
+                class="btn btn-info"
+                rippleEffect
+                (click)="openDetailOrder(row.orderId)"
+              >
+                Chi tiết
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModalAlert(modal)"
+      rippleEffect
+    >
+      Đóng cửa sổ
+    </button>
+  </div>
+</ng-template>
+<app-detail-of-order #InfoDetailOrderOfCustomer></app-detail-of-order>

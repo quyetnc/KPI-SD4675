@@ -1,0 +1,123 @@
+<!-- Page Title -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <h2>Sản phẩm {{ categoryName }}</h2>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <ul class="page-title-content">
+                    <li><a routerLink="/">Trang chủ</a></li>
+                    <li>Danh mục</li>
+                    <li>{{ categoryName }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-collection></app-collection> -->
+
+<div class="products-area pb-100">
+    <div class="container">
+        <div class="vaxim-grid-sorting row align-items-center">
+            <div class="col-lg-6 col-md-6 result-count">
+                <div class="d-flex align-items-center">
+                    <p>
+                        Tìm thấy
+                        <span class="count">{{ listProduct.length }}</span>
+                        sản phẩm
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ordering">
+                <div class="select-box">
+                    <label>Sắp xếp :</label>
+                    <select (change)="mySelectHandler($event.target.value)">
+                        <option ngValue="0">Mặc định</option>
+                        <!-- <option ngValue="1">Popularity</option> -->
+                        <option ngValue="2">Mới nhất</option>
+                        <option ngValue="3">Giá: Thấp đến cao</option>
+                        <option ngValue="4">Giá: Cao đến thấp</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="col-lg-4 col-md-6 col-sm-6"
+                *ngFor="
+                    let prd of listProduct
+                        | paginate: { itemsPerPage: 6, currentPage: shopGrid }
+                "
+            >
+                <div class="single-products-item">
+                    <div class="image">
+                        <a routerLink="/products-details" class="d-block">
+                            <img
+                                src="{{ apiUrl + prd.img }}"
+                                alt="products-image"
+                            />
+                        </a>
+                        <ul class="products-button">
+                            <li>
+                                <a
+                                    href="#"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#productsQuickView"
+                                >
+                                    <i class="fas fa-search-plus"></i>
+                                    <span class="tooltip-label"
+                                        >Quick View</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/compare">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span class="tooltip-label">Compare</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/wishlist">
+                                    <i class="far fa-heart"></i>
+                                    <span class="tooltip-label"
+                                        >Add to Wishlist</span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <a routerLink="/products-details">{{ prd.name }}</a>
+                        </h3>
+                        <a
+                            (click)="addToCart(prd.productId)"
+                            class="add-to-cart-btn"
+                            >Add to cart <i class="fas fa-cart-plus"></i
+                        ></a>
+                        <div class="price">
+                            <span class="old-price">{{
+                                prd.priceInput | vnd
+                            }}</span>
+                            <span class="new-price">{{
+                                prd.priceOutput | vnd
+                            }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="pagination-area">
+                    <pagination-controls
+                        previousLabel=""
+                        nextLabel=""
+                        (pageChange)="shopGrid = $event"
+                    ></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

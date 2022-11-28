@@ -1,0 +1,128 @@
+.special-offer-card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 45px 25px;
+    text-align: center;
+    transition: var(--transition);
+    margin-bottom: 30px;
+    
+    .offer-image {
+        position: relative;
+
+        .sale {
+            position: absolute;
+            left: -15px;
+            top: -35px;
+            display: inline-block;
+            font-size: 15px;
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+            padding: 5px 15px;
+            transition: var(--transition);
+            border-radius: 50px;
+            font-weight: 500;
+
+            &:hover {
+                background-color: var(--blackColor);
+            }
+        }
+        .new {
+            position: absolute;
+            left: -15px;
+            top: -35px;
+            display: inline-block;
+            font-size: 15px;
+            color: var(--whiteColor);
+            background-color: #FFB800;
+            padding: 5px 15px;
+            transition: var(--transition);
+            border-radius: 50px;
+            font-weight: 500;
+
+            &:hover {
+                background-color: var(--mainColor);
+            }
+        }
+    }
+    .offer-content {
+        margin-top: 30px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+        .price {
+            margin-bottom: 12px;
+
+            .new-price {
+                font-size: 15px;
+                color: var(--mainColor);
+                font-weight: bold;
+            }
+            .old-price {
+                font-size: 14px;
+                color: var(--optionalColor);
+                font-weight: 400;
+                margin-left: 5px;
+                text-decoration-line: line-through;
+            }
+        }
+        .rating {
+            padding: 0;
+            margin-bottom: 0;
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+                margin-right: 2px;
+                margin-left: 2px;
+
+                i {
+                    color: #FFB800;
+                    font-size: 14px;
+                }
+                &:last-child {
+                    i {
+                        color: var(--optionalColor);
+                    }
+                }
+            }
+        }
+    }
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .special-offer-card {
+        padding: 45px 20px 20px;
+        
+        .offer-content {
+            margin-top: 20px;
+    
+            h3 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

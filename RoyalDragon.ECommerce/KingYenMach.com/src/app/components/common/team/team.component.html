@@ -1,0 +1,27 @@
+<div class="team-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <h2><span>Đội ngũ của King Yến Mạch</span></h2>
+        </div>
+        <div class="row justify-content-center">
+            <owl-carousel-o [options]="teamSlides">
+                <ng-template carouselSlide *ngFor="let staff of listUsers">
+                    <div class="featured-products-wrap-card">
+                        <div class="featured-products-image">
+                            <a routerLink="/products-details">
+                                <img [src]="env+staff.image" alt="image">
+                            </a>
+                        </div>
+                        <div class="featured-products-content">
+                            <h3>
+                                <a routerLink="/products-details">{{staff.fullName}}</a>
+                            </h3>
+                            <span>{{staff.role}}</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+
+        </div>
+    </div>
+</div>

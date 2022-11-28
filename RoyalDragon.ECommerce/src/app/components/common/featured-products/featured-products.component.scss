@@ -1,0 +1,299 @@
+.crafts-featured-products-card {
+    text-align: center;
+    margin-bottom: 30px;
+    transition: var(--transition);
+
+    .products-content {
+        margin-top: 25px;
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .price {
+            color: var(--optionalColor);
+            font: {
+                size: var(--fontSize);
+                weight: 500;
+            };
+        }
+    }
+    &:hover {
+        transform: translateY(-5px);
+
+        .products-content {
+            h3 {
+                a {
+                    color: var(--mainColor);
+                }
+            }
+        }
+    }
+}
+.d-none {
+    &.d-block {
+        display: block !important;
+    }
+}
+.featured-products-wrap-card {
+    margin-bottom: 30px;
+
+    .featured-products-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        text-align: center;
+
+        img {
+            transition: var(--transition);
+            border-radius: 15px;
+            width: 305px;
+            height: 237px;
+        }
+        .products-action-list {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: inline-flex;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+
+                a {
+                    width: 58px;
+                    height: 50px;
+                    font-size: 18px;
+                    line-height: 50px;
+                    text-align: center;
+                    position: relative;
+                    display: inline-block;
+                    color: var(--whiteColor);
+                    background-color: var(--mainColor);
+                    border-right: 1px solid #c45d5d;
+                    cursor: pointer;
+                    &:hover {
+                        color: var(--whiteColor);
+                        background-color: var(--blackColor);
+                    }
+                }
+                &:nth-child(1) {
+                    a {
+                        border-radius: 8px 0 0 8px;
+                    }
+                }
+                &:nth-child(3) {
+                    a {
+                        border-radius: 0 8px 8px 0;
+                        border-right: none;
+                    }
+                }
+            }
+        }
+        .sale {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: inline-block;
+            font-size: 15px;
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+            padding: 5px 15px;
+            transition: var(--transition);
+            border-radius: 50px;
+            font-weight: 500;
+
+            &:hover {
+                background-color: var(--blackColor);
+            }
+        }
+        .new {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: inline-block;
+            font-size: 15px;
+            color: var(--whiteColor);
+            background-color: #FFB800;
+            padding: 5px 15px;
+            transition: var(--transition);
+            border-radius: 50px;
+            font-weight: 500;
+
+            &:hover {
+                background-color: var(--mainColor);
+            }
+        }
+    }
+    .featured-products-content {
+        text-align: center;
+        margin-top: 25px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 0;
+
+            a {
+                color: var(--blackColor);
+
+                &:hover {
+                    color: var(--mainColor);
+                }
+            }
+        }
+        span {
+            font-size: 15px;
+            color: var(--mainColor);
+            display: inline-block;
+            font-weight: bold;
+            margin: {
+                top: 12px;
+                bottom: 10px;
+            };
+        }
+        .price {
+            margin: {
+                top: 12px;
+                bottom: 10px;
+            };
+            .new-price {
+                font-size: 15px;
+                color: var(--mainColor);
+                font-weight: bold;
+                margin: {
+                    top: 0;
+                    bottom: 0;
+                };
+            }
+            .old-price {
+                font-size: 14px;
+                color: var(--optionalColor);
+                font-weight: 400;
+                text-decoration-line: line-through;
+                margin: {
+                    top: 0;
+                    bottom: 0;
+                };
+            }
+        }
+        .rating {
+            padding: 0;
+            margin-bottom: 0;
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+                margin-right: 2px;
+                margin-left: 2px;
+
+                i {
+                    color: #FFB800;
+                    font-size: 14px;
+                }
+                &:last-child {
+                    i {
+                        color: var(--optionalColor);
+                    }
+                }
+            }
+        }
+    }
+    &:hover {
+        .featured-products-image {
+            img {
+                transform: scale(1.08);
+            }
+            .products-action-list {
+                opacity: 1;
+                visibility: visible;
+                bottom: 5px;
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .crafts-featured-products-card {
+        .products-content {
+            margin-top: 18px;
+    
+            h3 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            .price {
+                font-size: 14px;
+            }
+        }
+    }
+    .featured-products-wrap-card {
+        .featured-products-image {
+            .products-action-list {
+                opacity: 1;
+                bottom: 15px;
+                visibility: visible;
+            }
+        }
+        .featured-products-content {
+            margin-top: 20px;
+    
+            h3 {
+                font-size: 18px;
+            }
+            span {
+                font-size: 14px;
+                margin: {
+                    top: 10px;
+                    bottom: 10px;
+                };
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .crafts-featured-products-card {
+        .products-content {
+            margin-top: 22px;
+    
+            h3 {
+                font-size: 20px;
+            }
+        }
+    }
+    .featured-products-wrap-card {
+        .featured-products-image {
+            .products-action-list {
+                opacity: 1;
+                bottom: 15px;
+                visibility: visible;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

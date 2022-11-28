@@ -1,0 +1,40 @@
+<ng-template #HistoryCallCustomerModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">Lịch sử cuộc gọi của khách hàng
+            {{listCustomers.length>0?listCustomers[0].fullname:""}}</h4>
+        <button type="button" class="close" (click)="closeModalAlert(modal)" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="table-responsive">
+            <table class="table table-hover-animation">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Khách hàng</th>
+                        <th>Nhân viên tư vấn</th>
+                        <th>Nội dung</th>
+                        <th>Ngày gọi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of listCustomers; index as i" [ngClass]="row.isBuy?'confirm':''">
+                        <td>{{i+1}}</td>
+                        <td>
+                            {{ row.customerName }}
+                        </td>
+                        <td>{{ row.user.fullname }}</td>
+                        <td>{{ row.note}}</td>
+                        <td>{{ row.createOn }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModalAlert(modal)" rippleEffect>
+            Đóng cửa sổ
+        </button>
+    </div>
+</ng-template>

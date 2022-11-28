@@ -1,0 +1,30 @@
+@import "../../../common/products/products.component.scss";
+@import "../../../common/widget-sidebar/widget-sidebar.component.scss";
+.single-products-box > a > img {
+    width: 416.01px;
+    height: 416.01px;
+}
+.single-products-box .content {
+    background-color: rgba(244, 236, 194, 0.7);
+    padding-right: 120px;
+}
+.single-products-box .content h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.widget_categories ul li a {
+    &:hover {
+        cursor: pointer;
+    }
+}
+.widget_categories ul li a.active {
+    color: var(--mainColor);
+    font-weight: bold;
+}
+.widget_categories ul li a.active {
+    
+    &::before {
+        width: 100%;
+    }
+}

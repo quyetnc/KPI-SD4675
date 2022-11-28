@@ -1,0 +1,63 @@
+<ng-template #AddEditCustomerDialogModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">Customer Information</h4>
+    <button
+      type="button"
+      class="close"
+      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="row">
+      <div class="col-6">
+        <label>Họ tên: </label>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Họ tên"
+            class="form-control"
+            [(ngModel)]="customerData.fullName"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <label>Số điện thoại: </label>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Số điện thoại"
+            class="form-control"
+            [(ngModel)]="customerData.phone"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <label>Địa chỉ: </label>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Địa chỉ"
+            class="form-control"
+            [(ngModel)]="customerData.address"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">
+      Lưu lại
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModalAlert(modal)"
+      rippleEffect
+    >
+      Hủy bỏ
+    </button>
+  </div>
+</ng-template>

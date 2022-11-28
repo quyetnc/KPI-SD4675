@@ -1,0 +1,47 @@
+<ng-template #OrderDetailOfCustomerModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">Order Detail Infomation</h4>
+    <button
+      type="button"
+      class="close"
+      (click)="closeModalAlert(modal)"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="table-responsive">
+      <table class="table table-hover-animation">
+        <thead>
+          <tr>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Tổng tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of listItemOrder; index as i">
+            <td>
+              {{ row.productName }}
+            </td>
+            <td>{{ row.quantity }}</td>
+            <td>{{ convertFormatVND(row.price) }}</td>
+            <td>{{ convertFormatVND(row.totalPrice) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModalAlert(modal)"
+      rippleEffect
+    >
+      Đóng cửa sổ
+    </button>
+  </div>
+</ng-template>

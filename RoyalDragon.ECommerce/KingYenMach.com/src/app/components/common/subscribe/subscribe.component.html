@@ -1,0 +1,17 @@
+<div
+    class="subscribe-area pb-100"
+    [ngClass]="{'d-none': router.url === '/index-4' || router.url === '/index-5' || router.url === '/index-7' || router.url === '/index-8'}"
+>
+    <div class="container">
+        <div class="subscribe-inner" *ngFor="let Content of bgImage;" style="background-image: url({{Content.img}});">
+            <div class="content">
+                <h2>Đăng ký & nhận các chương trình ưu đãi và hấp dẫn</h2>
+                <p>Nào, cùng săn sale cùng <b style="color: red;">King Yến Mạch</b>. Lưu ý: Voucher không áp dụng cho nhiều loại giảm giá khác.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="input-newsletter" placeholder="Nhập Email của bạn" required>
+                    <button type="submit"><i class="far fa-paper-plane"></i>ĐĂNG KÝ NGAY</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

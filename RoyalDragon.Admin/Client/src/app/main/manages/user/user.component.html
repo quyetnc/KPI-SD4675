@@ -1,0 +1,267 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- Kitchen Sink Datatables -->
+        <section id="ngx-datatable-kitchen-sink">
+            <core-card-snippet [snippetCode]="_snippetCodeKitchenSink">
+                <div class="row">
+                    <div class="col-12 mb-50">
+                        <div class="row">
+                            <div class="col-2" *ngIf="selected.length == 0">
+                                <button class="btn btn-primary ml-1" rippleEffect #openModal
+                                    (click)="modalOpenSLCIM(modalSLCIM, true)">
+                                    <i data-feather="plus" class="mr-0 mr-sm-1"></i><span
+                                        class="d-none d-sm-inline-block">Thêm
+                                        mới</span>
+                                </button>
+                            </div>
+                            <div class="col-2" *ngIf="selected.length == 1">
+                                <button type="button" class="btn btn-info custom-button" rippleEffect #openModal
+                                    (click)="modalOpenSLCIM(modalSLCIM,false)">
+                                    Cập nhật
+                                </button>
+                            </div>
+                            <div class="col-2" *ngIf="selected.length >0">
+                                <button type="button" class="btn btn-danger custom-button" rippleEffect #openModal
+                                    (click)="removeProduct()">
+                                    Xoá
+                                </button>
+                            </div>
+                            <div [ngClass]="selected.length == 1?'col-6':'col-8'">
+                            </div>
+                            <div class="col-2">
+
+                                <a csvLink [data]="exportCSVData" class="btn btn-outline-secondary float-right mr-1"
+                                    rippleEffect>Xuất ra Excel</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <label class="d-flex align-items-center">Hiển thị
+                                <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                hàng</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                            <label class="d-flex align-items-center"><input type="search" placeholder="Tìm kiếm"
+                                    class="form-control ml-25" (keyup)="filterUpdate($event)"
+                                    (search)="filterUpdate($event)" /></label>
+                        </div>
+                    </div>
+                </div>
+                <ngx-datatable [rows]="listUser" [rowHeight]="58" class="bootstrap core-bootstrap" [limit]="10"
+                    [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true"
+                    [selectionType]="SelectionType.checkbox" [limit]="basicSelectedOption"
+                    (activate)="onActivate($event)" (select)="onSelect($event)">
+                    <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                        [resizeable]="false">
+                        <ng-template ngx-datatable-header-template let-value="value"
+                            let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [checked]="allRowsSelected"
+                                    (change)="selectFn(!allRowsSelected)" id="headerChkbxRef" />
+                                <label class="custom-control-label" for="headerChkbxRef"></label>
+                            </div>
+                        </ng-template>
+                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                            let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [checked]="isSelected"
+                                    (change)="onCheckboxChangeFn($event)" id="rowChkbxRef{{ rowIndex }}" />
+                                <label class="custom-control-label" for="rowChkbxRef{{ rowIndex }}"></label>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Tên tài khoản" prop="username" [width]="280">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Email" prop="email" [width]="250">
+                        <ng-template let-email="value" ngx-datatable-cell-template>
+                            {{email}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Họ tên" prop="fullname" [width]="120">
+                        <ng-template let-fullname="value" ngx-datatable-cell-template>
+                            {{fullname}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Hình ảnh" prop="avatar" [width]="120">
+                        <ng-template let-avatar="value" ngx-datatable-cell-template>
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <img class="rounded-circle mr-1" src="{{avatar}}" height="32" width="32"
+                                        *ngIf="avatar==null" alt="datatable-avatar" />
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Số điện thoại" prop="phone" [width]="120">
+                        <ng-template ngx-datatable-cell-template>
+
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Địa chỉ" prop="address" [width]="120">
+
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Ngày sinh" prop="birthday" [width]="120">
+                        <ng-template ngx-datatable-cell-template let-birthday="value">
+                            {{birthday|date:'shortDate'}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Ngày tạo" prop="createOn" [width]="120">
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </core-card-snippet>
+        </section>
+        <!--/ Kitchen Sink Datatables -->
+    </div>
+</div>
+<div class="scrolling-content-inside-modal">
+    <!-- Modal -->
+    <ng-template #modalSLCIM let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel1">Nhân viên</h4>
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body" tabindex="0" ngbAutofocus>
+            <!-- Basic Inputs start -->
+            <section id="basic-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <core-card-snippet [isShowCodeIcon]="false">
+                            <h4 class="card-title">
+                                {{ isCreate ? "THÊM NHÂN VIÊN" : "CẬP NHẬT NHÂN VIÊN" }}
+                            </h4>
+                            <div>
+                                <form [formGroup]="userForm">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6" *ngIf="errorMessage">
+                                                <div class="form-text text-danger">
+                                                    {{ errorMessage }}
+                                                </div>
+                                            </div>
+                                            <div class="col-6" *ngIf="!isCreate">
+                                                <div class="form-group">
+                                                    <label for="basicInput">ID nhân viên</label>
+                                                    <input type="text" disabled formControlName="userId"
+                                                        value="{{ user?.userId??0 }}" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="basicInput">Họ tên</label>
+                                                    <input type="text" formControlName="fullname"
+                                                        class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="username">Tên tài khoản</label>
+                                                    <input type="text" class="form-control" id="username"
+                                                        formControlName="username" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="password">Mật khẩu</label>
+                                                    <input type="password" class="form-control" *ngIf="isCreate"
+                                                        id="password" formControlName="password" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="address">Địa chỉ</label>
+                                                    <input type="text" class="form-control" id="address"
+                                                        formControlName="address" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="address">Ngày sinh</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="birthday"
+                                                          ngbDatepicker #basicDP="ngbDatepicker" [minDate]="minDate" [ngModelOptions]="{standalone: true}" formControlName="birthday">
+                                                        <div class="input-group-append">
+                                                          <button class="btn btn-outline-secondary feather icon-calendar" (click)="basicDP.toggle()"
+                                                            type="button" rippleEffect></button>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" class="form-control" id="email"
+                                                        formControlName="email" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="phone">Số điện thoại</label>
+                                                    <input type="text" class="form-control" id="phone"
+                                                        formControlName="phone" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-6">
+                                                <label>Quyền cho nhân viên</label>
+                                                <div class="form-group">
+                                                    <!-- Select Custom Tag -->
+                                                    <ng-select [items]="listRoles" [hideSelected]="true" multiple="true"
+                                                        formControlName="role" bindLabel="name"
+                                                        [(ngModel)]="customTagselected"
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                                                            <span class="ng-value-label"> {{ item.name }}</span>
+                                                            <span class="ng-value-icon right" (click)="clear(item)"
+                                                                aria-hidden="true">×</span>
+                                                        </ng-template>
+                                                    </ng-select>
+                                                    <br />
+                                                    <!--/ Select Custom Tag -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </core-card-snippet>
+                    </div>
+                </div>
+            </section>
+            <!-- Basic Inputs end -->
+        </div>
+
+        <div class="modal-footer">
+            <ng-container *ngIf="isCreate; else elseTemplate">
+                <button type="button" class="btn btn-warning" rippleEffect (click)="createOrUpdateUser()">
+                    Thêm mới
+                </button>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <button type="button" class="btn btn-warning mr-1" rippleEffect (click)="createOrUpdateUser()">
+                    Cập nhật
+                </button>
+            </ng-template>
+            <button type="button" class="btn btn-info" rippleEffect (click)="modal.dismiss('Cross click')">
+                Huỷ bỏ
+            </button>
+        </div>
+
+
+
+
+    </ng-template>
+    <!-- / Modal -->
+</div>

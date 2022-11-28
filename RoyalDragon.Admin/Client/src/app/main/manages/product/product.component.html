@@ -1,0 +1,611 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <!-- Kitchen Sink Datatables -->
+    <section id="ngx-datatable-kitchen-sink">
+      <core-card-snippet [snippetCode]="_snippetCodeKitchenSink">
+        <div class="row">
+          <div class="col-12 mb-50">
+            <div class="row">
+              <div class="col-2" *ngIf="selected.length == 0">
+                <button
+                  class="btn btn-primary ml-1"
+                  rippleEffect
+                  #openModal
+                  (click)="modalOpenSLCIM(modalSLCIM, true)"
+                >
+                  <i data-feather="plus" class="mr-0 mr-sm-1"></i
+                  ><span class="d-none d-sm-inline-block">Thêm mới</span>
+                </button>
+              </div>
+              <div class="col-2" *ngIf="selected.length == 1">
+                <button
+                  type="button"
+                  class="btn btn-info custom-button"
+                  rippleEffect
+                  #openModal
+                  (click)="modalOpenSLCIM(modalSLCIM, false)"
+                >
+                  Cập nhật
+                </button>
+              </div>
+              <div class="col-2" *ngIf="selected.length > 0">
+                <button
+                  type="button"
+                  class="btn btn-danger custom-button"
+                  rippleEffect
+                  #openModal
+                  (click)="removeProduct()"
+                >
+                  Xoá
+                </button>
+              </div>
+              <div [ngClass]="selected.length == 1 ? 'col-6' : 'col-8'"></div>
+              <div class="col-2">
+                <a
+                  csvLink
+                  [data]="exportCSVData"
+                  class="btn btn-outline-secondary float-right mr-1"
+                  style="margin-left: auto; margin-right: 0"
+                  rippleEffect
+                  >Xuất ra Excel</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-between align-items-center m-1">
+              <label class="d-flex align-items-center"
+                >Hiển thị
+                <select
+                  class="form-control mx-25"
+                  [(ngModel)]="basicSelectedOption"
+                >
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                hàng</label
+              >
+            </div>
+          </div> -->
+          <!-- <div class="col-md-6 col-12 d-flex justify-content-md-end">
+            <div
+              class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0"
+            >
+              <label class="d-flex align-items-center"
+                ><input
+                  type="search"
+                  placeholder="Tìm kiếm"
+                  class="form-control ml-25"
+                  (keyup)="filterUpdate($event)"
+                  (search)="filterUpdate($event)"
+              /></label>
+            </div>
+          </div> -->
+        </div>
+        <ngx-datatable
+          [rows]="listProduct"
+          [rowHeight]="58"
+          class="bootstrap core-bootstrap"
+          [columnMode]="ColumnMode.force"
+          [headerHeight]="40"
+          [footerHeight]="50"
+          [selectionType]="SelectionType.checkbox"
+          [limit]="basicSelectedOption"
+          (select)="onSelect($event)"
+        >
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+          >
+            <ng-template
+              ngx-datatable-header-template
+              let-value="value"
+              let-allRowsSelected="allRowsSelected"
+              let-selectFn="selectFn"
+            >
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  [checked]="allRowsSelected"
+                  (change)="selectFn(!allRowsSelected)"
+                  id="headerChkbxRef"
+                />
+                <label
+                  class="custom-control-label"
+                  for="headerChkbxRef"
+                ></label>
+              </div>
+            </ng-template>
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-value="value"
+              let-isSelected="isSelected"
+              let-onCheckboxChangeFn="onCheckboxChangeFn"
+            >
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  [checked]="isSelected"
+                  (change)="onCheckboxChangeFn($event)"
+                  id="rowChkbxRef{{ rowIndex }}"
+                />
+                <label
+                  class="custom-control-label"
+                  for="rowChkbxRef{{ rowIndex }}"
+                ></label>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Hình ảnh" prop="img" [width]="120">
+            <ng-template let-img="value" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                <div>
+                  <img
+                    class="rounded-circle mr-1"
+                    src="{{ apiUrl + img }}"
+                    height="50"
+                    width="50"
+                    alt="datatable-avatar"
+                  />
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Tên sản phẩm" prop="name" [width]="280">
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Giá nhập" prop="priceInput" [width]="250">
+            <ng-template let-priceInput="value" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                {{ priceInput | vnd }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Giá bán" prop="priceOutput" [width]="120">
+            <ng-template let-priceOutput="value" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                {{ priceOutput | vnd }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            name="Lịch sử"
+            [width]="120"
+            [sortable]="false"
+            prop="productId"
+          >
+            <ng-template
+              ngx-datatable-cell-template
+              let-rowIndex="rowIndex"
+              let-value="value"
+              let-row="row"
+            >
+              <button
+                class="btn btn-info ml-1"
+                rippleEffect
+                #openModal
+                (click)="fViewHistoryUpdateProduct(row.productId)"
+              >
+                <i
+                  [data-feather]="'eye'"
+                  title="Bấm để xem lịch sử chỉnh sửa sản phẩm"
+                  class="text-primary cursor-pointer"
+                ></i>
+                <span class="d-none d-sm-inline-block" style="margin-left: 10px"
+                  >Lịch sử</span
+                >
+              </button>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Trạng thái" prop="isSell" [width]="120">
+            <ng-template let-isSell="value" ngx-datatable-cell-template>
+              <div
+                class="badge badge-pill"
+                [ngClass]="{
+                  'badge-light-success': isSell == true,
+                  'badge-light-danger': isSell == false
+                }"
+              >
+                {{ isSell == true ? "Đang hoạt động" : "Tạm ngưng" }}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </core-card-snippet>
+    </section>
+    <!--/ Kitchen Sink Datatables -->
+  </div>
+</div>
+<div class="scrolling-content-inside-modal">
+  <!-- Modal Create / Update-->
+  <ng-template #modalSLCIM let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel1">
+        {{ isCreate ? "Thêm mới sản phẩm" : "Cập nhật sản phẩm" }}
+      </h4>
+      <button
+        type="button"
+        class="close"
+        (click)="modal.dismiss('Cross click')"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <!-- Basic Inputs start -->
+      <section id="basic-input">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- <h4 class="card-title">
+                {{ isCreate ? "THÊM MỚI SẢN PHẨM" : "CẬP NHẬT SẢN PHẨM" }}
+              </h4> -->
+            <div>
+              <form [formGroup]="productForm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6" *ngIf="errorMessage">
+                      <div class="form-text text-danger">
+                        {{ errorMessage }}
+                      </div>
+                    </div>
+                    <div class="col-6" *ngIf="!isCreate">
+                      <div class="form-group">
+                        <label for="basicInput">ID Sản phẩm</label>
+                        <input
+                          type="text"
+                          disabled
+                          formControlName="productId"
+                          value="{{ product?.productId ?? 0 }}"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="name">Tên sản phẩm</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="quantity">Tồn kho</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          [disabled]="!isCreate"
+                          id="quantity"
+                          formControlName="quantity"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="img">Hình ảnh 1</label>
+                        <div class="media">
+                          <a href="javascript:void(0);" class="mr-25">
+                            <img
+                              [src]="avatarImage1"
+                              class="rounded mr-50"
+                              alt="profile image"
+                              height="76"
+                              width="80"
+                            />
+                          </a>
+                          <div class="media-body mt-75 ml-1">
+                            <button
+                              (click)="file1.click()"
+                              for="account-upload1"
+                              class="btn btn-sm btn-primary mb-75 mr-75"
+                              rippleEffect
+                              multiple
+                            >
+                              Tải ảnh lên
+                            </button>
+                            <input
+                              type="file"
+                              #file1
+                              id="account-upload1"
+                              hidden
+                              accept="image/*"
+                              (change)="uploadImage($event, 1)"
+                            />
+                            <p>Các file cho phép JPG, GIF hoặc PNG.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="img">Hình ảnh 2</label>
+                        <div class="media">
+                          <a href="javascript:void(0);" class="mr-25">
+                            <img
+                              [src]="avatarImage2"
+                              class="rounded mr-50"
+                              alt="profile image"
+                              height="76"
+                              width="80"
+                            />
+                          </a>
+                          <div class="media-body mt-75 ml-1">
+                            <button
+                              (click)="file2.click()"
+                              for="account-upload2"
+                              class="btn btn-sm btn-primary mb-75 mr-75"
+                              rippleEffect
+                            >
+                              Tải ảnh lên
+                            </button>
+                            <input
+                              type="file"
+                              #file2
+                              id="account-upload2"
+                              hidden
+                              accept="image/*"
+                              (change)="uploadImage($event, 2)"
+                            />
+                            <p>Các file cho phép JPG, GIF hoặc PNG.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="img">Hình ảnh 3</label>
+                        <div class="media">
+                          <a href="javascript:void(0);" class="mr-25">
+                            <img
+                              [src]="avatarImage3"
+                              class="rounded mr-50"
+                              alt="profile image"
+                              height="76"
+                              width="80"
+                            />
+                          </a>
+                          <div class="media-body mt-75 ml-1">
+                            <button
+                              (click)="file3.click()"
+                              for="account-upload3"
+                              class="btn btn-sm btn-primary mb-75 mr-75"
+                              rippleEffect
+                            >
+                              Tải ảnh lên
+                            </button>
+                            <input
+                              type="file"
+                              #file3
+                              id="account-upload3"
+                              hidden
+                              accept="image/*"
+                              (change)="uploadImage($event, 3)"
+                            />
+                            <p>Các file cho phép JPG, GIF hoặc PNG.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="shortDescription">Mô tả ngắn</label>
+
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="shortDescription"
+                          formControlName="shortDescription"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="description">Mô tả chi tiết</label>
+                        <quill-editor
+                          formControlName="description"
+                          name="quill-content"
+                        >
+                        </quill-editor>
+                        <!-- <input
+                          type="text"
+                          class="form-control"
+                          id="description"
+                          formControlName="description"
+                        /> -->
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="priceInput">Giá nhập</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="priceInput"
+                          formControlName="priceInput"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="priceOutput">Giá xuất</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="priceOutput"
+                          formControlName="priceOutput"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="type">Danh mục</label>
+                        <ng-select
+                          [items]="listCategory"
+                          bindLabel="name"
+                          bindValue="categoryId"
+                          placeholder="Chọn danh mục"
+                          formControlName="categoryId"
+                        >
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="type">Trạng thái</label>
+
+                        <ng-select
+                          formControlName="isSell"
+                          placeholder="Chọn trạng thái"
+                        >
+                          <ng-option [value]="true"> Hoạt động </ng-option>
+                          <ng-option [value]="false">
+                            Ngừng kinh doanh
+                          </ng-option>
+                        </ng-select>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <ng-container *ngIf="isCreate; else elseTemplate">
+                        <button
+                          type="button"
+                          class="btn btn-warning"
+                          rippleEffect
+                          (click)="createOrUpdateProduct()"
+                        >
+                          Thêm mới
+                        </button>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <button
+                          type="button"
+                          class="btn btn-warning mr-1"
+                          rippleEffect
+                          (click)="createOrUpdateProduct()"
+                        >
+                          Cập nhật
+                        </button>
+                      </ng-template>
+                      <button
+                        type="button"
+                        class="btn btn-info"
+                        rippleEffect
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        Huỷ bỏ
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Basic Inputs end -->
+    </div>
+  </ng-template>
+  <!-- / Modal Create / Update-->
+
+  <!-- Modal Show history-->
+  <ng-template #modalShowHistory let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel1">Lịch sử cập nhật sản phẩm</h4>
+      <button
+        type="button"
+        class="close"
+        (click)="modal.dismiss('Cross click')"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <!-- Basic Inputs start -->
+      <section id="basic-input">
+        <div class="row">
+          <div class="col-md-12">
+            <core-card-snippet [isShowCodeIcon]="false">
+              <h4 class="card-title">Lịch sử cập nhật sản phẩm</h4>
+              <ngx-datatable
+                [rows]="listProductUpdateHistory"
+                [rowHeight]="58"
+                class="bootstrap core-bootstrap"
+                [limit]="10"
+                [columnMode]="ColumnMode.force"
+                [headerHeight]="40"
+                [footerHeight]="50"
+                [scrollbarH]="true"
+                [selectionType]="SelectionType.checkbox"
+                [limit]="basicSelectedOption"
+                (activate)="onActivate($event)"
+                (select)="onSelect($event)"
+              >
+                <ngx-datatable-column
+                  name="Tên sản phẩm"
+                  prop="name"
+                  [width]="280"
+                >
+                </ngx-datatable-column>
+                <ngx-datatable-column
+                  name="Giá nhập"
+                  prop="priceInput"
+                  [width]="250"
+                >
+                  <ng-template
+                    let-priceInput="value"
+                    ngx-datatable-cell-template
+                  >
+                    <div class="d-flex align-items-center">
+                      {{ priceInput | vnd }}
+                    </div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column
+                  name="Giá bán"
+                  prop="priceOutput"
+                  [width]="120"
+                >
+                  <ng-template
+                    let-priceOutput="value"
+                    ngx-datatable-cell-template
+                  >
+                    <div class="d-flex align-items-center">
+                      {{ priceOutput | vnd }}
+                    </div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column
+                  name="Người tạo"
+                  prop="createBy"
+                  [width]="120"
+                >
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </core-card-snippet>
+          </div>
+        </div>
+      </section>
+      <!-- Basic Inputs end -->
+    </div>
+  </ng-template>
+  <!-- / Modal Show history-->
+</div>
